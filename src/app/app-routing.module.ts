@@ -6,7 +6,8 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
-  { path: "profile-page", component: ProfilePageComponent}
+  { path: "profile-page", component: ProfilePageComponent},
+  { path: "qr-scanner", component: ProfilePageComponent}
 ];
 
 @NgModule({
