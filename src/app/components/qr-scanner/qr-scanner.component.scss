@@ -1,0 +1,32 @@
+
+.qr-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-family: 'Quicksand';
+  
+    .qr-title{
+        font-size: 1.8em;
+        font-weight: 700;
+        letter-spacing: 5px;
+
+        span{
+            color:#EE786C;
+        }
+    }
+
+    .qr-scanner{
+        height:50vh;
+        width: 50vw;
+    }
+}
+  
+  
+  
+
+
+
+

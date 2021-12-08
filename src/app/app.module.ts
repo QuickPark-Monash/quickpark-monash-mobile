@@ -12,6 +12,8 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component';
+import { DataAnalyticsComponent } from './components/data-analytics/data-analytics.component';
+// import vegaEmbedModule from 'vega-embed';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component
     InputFieldComponent,
     ProfilePageComponent,
     NavigationComponent,
-    QrScannerComponent
+    QrScannerComponent,
+    DataAnalyticsComponent
     
   ],
   imports: [

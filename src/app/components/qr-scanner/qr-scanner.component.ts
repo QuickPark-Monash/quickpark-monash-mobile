@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QrScannerComponent implements OnInit {
   scanResult: any = '';
-
+  title: string ="QR Code Scanner"
 
   constructor() { }
 
