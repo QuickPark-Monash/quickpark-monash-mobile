@@ -1,0 +1,19 @@
+.button-wrap{
+  display: flex;
+
+  .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #0F123F;
+    padding: 0.5em 2em 0.5em 2em;
+    font-family: "Quicksand";
+    font-weight: 700;
+    width: 275px;
+    font-size: 1.1em;
+    border-radius: 1em;
+    border-style: none;
+
+  }
+}
