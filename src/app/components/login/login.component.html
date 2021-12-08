@@ -18,7 +18,7 @@
       placeholder="Email Address"></app-input-field>
       <app-input-field class="input-field"
       icon="fas fa-user"
-      type="email"
+      type="password"
       placeholder="Password"></app-input-field>
     </div>
     <div class="buttons-field">
@@ -26,6 +26,8 @@
       <app-button
       color="#EE786C"
       text="Login now to QuickPark"
+      (click)=login()
+      routerLink="/profile-page"
       ></app-button>
       <app-button
       text="Sign Up for QuickPark"
