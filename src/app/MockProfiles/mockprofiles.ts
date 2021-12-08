@@ -9,14 +9,14 @@ export const MOCKPROFILE: Profile = {
     id: 1,
     vehicleName: "Mini Cooper Convertible",
     vehiclePlate: "WIN 1890",
-    vehicleImage: "assets/Images/zach-car.png",
+    vehicleImage: "assets/profile_pics/zach-car.png",
   },
   registeredVehicles: [
     {
       id: 1,
       vehicleName: "Mini Cooper Convertible",
       vehiclePlate: "WIN 1890",
-      vehicleImage: "assets/Images/zach-car.png",
+      vehicleImage: "assets/profile_pics/zach-car.png",
     }
   ],
 }

@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ButtonComponent } from './components/button/button.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ButtonComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    ProfilePageComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

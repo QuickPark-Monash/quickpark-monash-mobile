@@ -1,0 +1,132 @@
+.dashboard-wrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+
+  .navigation{
+    margin-top: auto;
+    width: 100%;
+    position: sticky;
+  }
+
+  .profile-header{
+    height: 45vh;
+    width: 100%;
+    background-color: #3F3D56;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 1.5em 1.5em;
+
+
+    .screen-title{
+      font-family: 'Quicksand';
+      font-size: 2em;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      padding-top: 8vh;
+
+      span{
+        color: #EE786C;
+      }
+    }
+
+    .picAndDesc{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .profileImage{
+        width: 120px;
+        height: auto;
+        image-rendering: -webkit-optimize-contrast;
+      }
+
+      .profileDesc{
+        font-family: "Open Sans";
+        margin-left: 10px;
+        margin-top: 20px;
+      }
+
+      .topUpBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.9em;
+        font-weight: 700;
+        text-align: center;
+        background-color: #9999FF ;
+        margin-top: 10px;
+        height: 30px;
+        border-radius: 0.5em;
+      }
+    }
+    .profileName{
+      font-family: Quicksand;
+      font-weight: 700;
+      font-size: 1.5em;
+      color: white;
+      margin-top: 2em;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .profile-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1em;
+
+    .carImage{
+      width: 200px;
+      margin-left: 10px;
+      height: auto;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .carDescTitle{
+      font-size: 1.2em;
+      font-family:"Quicksand";
+      font-weight: 700;
+      margin-top: 1em;
+      color: #BABEC6;
+    }
+
+    .carName{
+      font-size: 1.5em;
+      font-family:"Quicksand";
+      font-weight: 700;
+      color: #0F123F;
+    }
+
+    .carPlate{
+      font-size: 1em;
+      font-family:"Quicksand";
+      font-weight: 700;
+      color: #BABEC6;
+    }
+
+    .changeCarButton{
+      font-family: "Quicksand";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9em;
+      font-weight: 700;
+      text-align: center;
+      background-color: #0F123F ;
+      margin-top: 1em;
+      padding: 1em 2em 1em 2em;
+      height: 20px;
+      border-radius: 0.5em;
+    }
+  }
+}
