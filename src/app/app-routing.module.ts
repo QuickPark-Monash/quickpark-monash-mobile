@@ -1,3 +1,4 @@
+import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component';
 import { NgModule } from '@angular/core';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "profile-page", component: ProfilePageComponent},
-  { path: "qr-scanner", component: ProfilePageComponent}
+  { path: "qr-scanner", component: QrScannerComponent}
 ];
 
 @NgModule({
