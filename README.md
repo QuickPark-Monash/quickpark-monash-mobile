@@ -35,7 +35,7 @@ The webpage built is currently adjusted to look good on <b>most *cough*</b> of t
 Click on the link above and enjoy the webpage! Details about the webpage will be further down the section. 
 
 <h3>Viewing on your mobile device</h3> 
-If you are currently, on your mobile device, good! We tested that the best app experience is by using your mobile phone. Scan the QR Code below to directly navigate to our website. Since not much testing as been done, we cannot guarantee absolute responsiveness for every device. If positioning seems out of place, remember to view the website through your browser using the steps above. 
+If you are currently, on your mobile device, good! We tested that the best app experience is by using your mobile phone. For your convenience, scan the QR Code below to directly navigate to our website. You may also use the initial link on your mobile browser. Since not much testing as been done, we cannot guarantee absolute responsiveness for every device. If positioning seems out of place, remember to view the website through your browser using the steps above. 
 
 <p align=center><img src="https://user-images.githubusercontent.com/63769232/145397761-20d165da-b6a6-4050-b3c5-39478d2dfa4b.png"></p>
 
