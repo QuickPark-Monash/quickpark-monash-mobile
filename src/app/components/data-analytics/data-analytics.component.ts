@@ -58,7 +58,7 @@ export class DataAnalyticsComponent implements OnInit {
       title:"Parking Data",
       icon: "info",
       text:"This page shows you various parking information like daily pricing for a parking location, allowing you to make informed parking choices.",
-      footer:"It is currently under construction"
+      footer:"Functionality is incomplete"
     })
     this.myChart1 = this.generateChart();
     // this.myChart2 = this.generateChart(MOCK_MALL_DATA[1], "myChart2");

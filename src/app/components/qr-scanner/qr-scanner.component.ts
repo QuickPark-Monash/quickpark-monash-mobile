@@ -14,6 +14,7 @@ export class QrScannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.scanned = false;
     Swal.fire({
       icon: "info",
       title: "QR Scanner",
