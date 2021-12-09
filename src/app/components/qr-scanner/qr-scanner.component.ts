@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 export class QrScannerComponent implements OnInit {
   scanResult: any = '';
   title: string ="QR Code Scanner"
+  scanned?: boolean;
 
   constructor() { }
 
@@ -22,6 +23,7 @@ export class QrScannerComponent implements OnInit {
   }
 
   onCodeResult(result: string){
+    this.scanned = true;
     Swal.fire({
       icon: "success",
       title: "Check in successful!",
