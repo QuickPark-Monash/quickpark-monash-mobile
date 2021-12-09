@@ -18,7 +18,7 @@
     background-color: #3F3D56;
     display: flex;
     flex-direction: column;
-    border-radius: 0 0 1.5em 1.5em;
+    border-radius: 0 0 4vh 4vh;
 
 
     .screen-title{
@@ -70,7 +70,8 @@
       font-weight: 700;
       font-size: 1.5em;
       color: white;
-      margin-top: 2em;
+      margin-top: auto;
+      margin-bottom: 2vh;
       display: flex;
       justify-content: center;
     }

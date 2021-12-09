@@ -12,6 +12,8 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { ReserveComponent } from './components/reserve/reserve.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,10 @@ import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component
     InputFieldComponent,
     ProfilePageComponent,
     NavigationComponent,
-    QrScannerComponent
-    
+    QrScannerComponent,
+    WalletComponent,
+    ReserveComponent
+
   ],
   imports: [
     BrowserModule,
