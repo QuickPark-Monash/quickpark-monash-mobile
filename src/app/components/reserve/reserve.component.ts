@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationItem } from 'src/app/Interfaces/reservationItem';
-import { MOCKPROFILE } from 'src/app/MockProfiles/mockprofiles';
+import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 
 import Swal from 'sweetalert2';
 import * as moment from 'moment';

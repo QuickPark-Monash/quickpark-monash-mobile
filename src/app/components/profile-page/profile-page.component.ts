@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/Interfaces/Profile';
-import { MOCKPROFILE } from 'src/app/MockProfiles/mockprofiles';
+import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 
 @Component({
   selector: 'app-profile-page',
