@@ -40,6 +40,14 @@ If you are currently, on your mobile device, good! We tested that the best app e
 <p align=center><img src="https://user-images.githubusercontent.com/63769232/145398637-ff67dcaf-bc76-42c3-9ca4-33e7e164207c.png"></p>
 
 
+<h3>Cloning the repository</h3>
+If you've chosen to look at how the insides of our web application works, the process is fairly simple. <br><br>
+1. Run <code>npm install -g @angular/cli</code> to install Angular on your local device.<br>
+2. Next, run <code>git clone https://github.com/QuickPark-Monash/quickpark-monash-mobile.git</code> to download the files to a directory.<br>
+3. Then, run <code>npm install</code> to install all the required dependencies.<br>
+4. Run <code>ng serve</code> to host your Angular project locally, make sure you're in the project directory<br>
+5. By default, the webpage should load at <code>localhost:4200</code>, follow the steps above to change your Google Chrome device size for optimal surfing.
+
 <!-- to start off, run npm install on these few stuff:
 npm i angular 
 npm i @zxing/library --force
