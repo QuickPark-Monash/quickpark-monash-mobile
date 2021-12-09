@@ -56,8 +56,8 @@ export class DataAnalyticsComponent implements OnInit {
               align: 'center',
               font:{
                 family: "Quicksand",
-                size: 20,
-                weight: "500"
+                size: 12,
+                weight: "600"
               }
             },
             grid: {
@@ -78,7 +78,7 @@ export class DataAnalyticsComponent implements OnInit {
               font:{
                 family: "Quicksand",
                 size: 10,
-                weight: "400"
+                weight: "550"
               }
             }
 

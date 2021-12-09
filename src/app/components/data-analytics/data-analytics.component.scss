@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    width: 100vw;
     font-family: 'Quicksand';
   
     #chart-div{
@@ -12,6 +12,7 @@
     }
 
     #data-title{
+        text-align: center;
         font-size: 1.8em;
         font-weight: 700;
         span{
@@ -20,6 +21,7 @@
     }
 
     #venue-name{
+        text-align: center;
         font-weight: 600;
         font-size: 1em;
         align-self: center;
