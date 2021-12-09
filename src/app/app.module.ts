@@ -14,6 +14,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
+import { DataAnalyticsComponent } from './components/data-analytics/data-analytics.component';
+// import vegaEmbedModule from 'vega-embed';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,8 @@ import { ReserveComponent } from './components/reserve/reserve.component';
     NavigationComponent,
     QrScannerComponent,
     WalletComponent,
-    ReserveComponent
-
+    ReserveComponent,
+    DataAnalyticsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,28 @@
+.data-container{   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-family: 'Quicksand';
+  
+    #vis{
+        width: 100%;
+        height: 100%;
+    }
+
+    .data-title{
+        font-size: 1.8em;
+        font-weight: 700;
+        letter-spacing: 5px;
+
+        span{
+            color:#EE786C;
+        }
+    }
+}
+
 
 .qr-container{
     display: flex;
@@ -24,8 +49,8 @@
     }
 }
   
-  
-  
+
+
 
 
 
