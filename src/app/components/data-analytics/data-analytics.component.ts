@@ -18,8 +18,8 @@ export class DataAnalyticsComponent implements OnInit {
   venueName: string = "empty";
   myData: Array<number> = [12, 19, 3, 5, 2, 3, 20];
   days: Array<string> = ['Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  expensiveDay: string = this.days[Math.max.apply(Math, this.myData)];
-  recommendedDay: string = this.days[Math.min.apply(Math, this.myData)];
+  expensiveDay: string = this.days[this.arrayMax(this.myData)];
+  recommendedDay: string = this.days[this.arrayMin(this.myData)];
   bgColorArr: Array<string> = [
     'rgba(255, 99, 132, 0.2)',
     'rgba(54, 162, 235, 0.2)',
@@ -54,7 +54,11 @@ export class DataAnalyticsComponent implements OnInit {
   // }
 
   ngOnInit() {
-    // this.expensiveDay = Math.max.apply(Math, this.myData);
+    // this.expensiveDay = this.days[Math.max.apply(Math, this.myData)];
+    // this.recommendedDay = this.days[Math.min.apply(Math, this.myData)];
+    console.log(this.expensiveDay)
+    console.log(this.recommendedDay)
+
 
     const myChart = new Chart("myChart", {
       type: 'bar',
@@ -115,7 +119,14 @@ export class DataAnalyticsComponent implements OnInit {
         }
       }
     });
-
   }
 
+  arrayMin(arr: Array<number>) {
+    return arr.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
+  }
+
+  arrayMax(arr: Array<number>) {
+    return arr.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+  }
 }
+
