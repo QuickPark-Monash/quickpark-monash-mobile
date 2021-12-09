@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
+import { MallData } from 'src/app/Interfaces/MallData';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NgbdDropdownBasic } from './dropdown-basic';
 
@@ -14,12 +16,18 @@ export class DataAnalyticsComponent implements OnInit {
   // canvasElement: any;
   // canvasWidth: number;
   // canvasHeight: number;
-
-  venueName: string = "empty";
-  myData: Array<number> = [12, 19, 3, 5, 2, 3, 20];
+  myChart1: any;
+  myChart2: any;
+  myChart3: any;
+  showFlag: boolean = false;
+  allMallData: MallData[] = MOCK_MALL_DATA;
+  selectedMall: MallData = MOCK_MALL_DATA[0];
+  mallIds: Array<number> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
+  mallNames: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallName));
+  weeklyPrices: Array<number> = this.selectedMall.weeklyPrices;
   days: Array<string> = ['Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  expensiveDay: string = this.days[this.arrayMax(this.myData)];
-  recommendedDay: string = this.days[this.arrayMin(this.myData)];
+  expensiveDay: string = this.days[this.arrayMax(this.weeklyPrices)];
+  recommendedDay: string = this.days[this.arrayMin(this.weeklyPrices)];
   bgColorArr: Array<string> = [
     'rgba(255, 99, 132, 0.2)',
     'rgba(54, 162, 235, 0.2)',
@@ -40,41 +48,64 @@ export class DataAnalyticsComponent implements OnInit {
     // const canvasWidth = this.canvasElement.width;
     // const canvasHeight = this.canvasElement.height;
     // this.xLabSize = canvasWidth;
+
+
   }
 
-  // ngAfterViewInit() {
-  //   this.canvasRef.nativeElement.focus();
-  //   const canvasElement = this.canvasRef.nativeElement;
-  //   this.canvasWidth = canvasElement.width;
-  //   this.canvasHeight = canvasElement.height;
-
-  //   this.xLabSize = 0.01 * this.canvasWidth;
-  //   console.log("xlabsize: " + this.xLabSize)
-  //   console.log("rounded: " + Math.round(this.xLabSize))
-  // }
-
   ngOnInit() {
-    // this.expensiveDay = this.days[Math.max.apply(Math, this.myData)];
-    // this.recommendedDay = this.days[Math.min.apply(Math, this.myData)];
-    console.log(this.expensiveDay)
-    console.log(this.recommendedDay)
+    console.log(this.mallNames)
+    console.log(this.selectedMall)
+    this.myChart1 = this.generateChart();
+    // this.myChart2 = this.generateChart(MOCK_MALL_DATA[1], "myChart2");
+    // this.myChart3 = this.generateChart(MOCK_MALL_DATA[2], "myChart3");
 
+  }
 
-    const myChart = new Chart("myChart", {
+  generateChart(){
+    return new Chart("myChart1", {
       type: 'bar',
       data: {
         labels: this.days,
-        datasets: [{
-          data: this.myData,
-          backgroundColor: this.bgColorArr,
-          borderColor: this.bgColorArr,
-          borderWidth: 1
-        }]
+        datasets: [
+          {
+            label: MOCK_MALL_DATA[0].mallName,
+            data: MOCK_MALL_DATA[0].weeklyPrices,
+            backgroundColor: this.bgColorArr[0],
+            borderColor: this.bgColorArr[0],
+            borderWidth: 1
+          },
+          {
+            label: MOCK_MALL_DATA[1].mallName,
+            data: MOCK_MALL_DATA[1].weeklyPrices,
+            backgroundColor: this.bgColorArr[1],
+            borderColor: this.bgColorArr[1],
+            borderWidth: 1
+          },
+          {
+            label: MOCK_MALL_DATA[2].mallName,
+            data: MOCK_MALL_DATA[2].weeklyPrices,
+            backgroundColor: this.bgColorArr[2],
+            borderColor: this.bgColorArr[2],
+            borderWidth: 1
+          }
+        ]
       },
+
       options: {
         plugins: {
           legend: {
-            display: false
+            
+            align: 'center',
+            display: true,
+            position: 'bottom',
+            labels:{
+              boxWidth: 10,
+              textAlign: "left",
+              font:{
+                size: 10
+              }
+            },
+            fullSize: false
           }
         },
         scales: {
@@ -121,6 +152,16 @@ export class DataAnalyticsComponent implements OnInit {
     });
   }
 
+  // addOrUpdateChart(newMall: MallData){
+  //   const newWeeklyPrices = newMall.weeklyPrices;
+  //   console.log(newWeeklyPrices)
+  //   console.log(newMall)
+
+  //   this.myChart.data.datasets.data = newWeeklyPrices;
+  //   this.myChart.update();
+  // }
+
+
   arrayMin(arr: Array<number>) {
     return arr.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
   }
@@ -128,5 +169,12 @@ export class DataAnalyticsComponent implements OnInit {
   arrayMax(arr: Array<number>) {
     return arr.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
   }
+
+  showChart(canvasId: string){
+    const idLength = canvasId.length;
+    const chartId: number = parseInt(canvasId.substring(idLength - 1, idLength)) - 1;
+    return chartId === this.selectedMall.mallId;
+  }
+
 }
 

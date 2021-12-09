@@ -2,9 +2,34 @@
 <div class="data-wrapper">
   <div id="chart-div">
     <p id="data-title">Parking <span>Analytics</span></p>
-    <h1 id="venue-name">{{venueName}}</h1>
-    <canvas #canvasRef id="myChart"></canvas>
-    <h2>Most Expensive Day: {{expensiveDay}}</h2>
+
+    <!-- <h1 id="venue-name">{{venueName}}</h1> -->
+    <div class="form-group">
+      <label class="form-label" for="mallName">Current Mall</label>
+      <!-- <select class="form-control" id="mallId"
+              required
+              [(ngModel)]="selectedMall" name="mallId"
+              #mallId="ngModel"> -->
+      <!-- <select class="form-control" [(ngModel)]="selectedMall" (change)="addOrUpdateChart(selectedMall)"> -->
+      <select class="form-control" [(ngModel)]="selectedMall">
+
+        <option class="form-dropdown" *ngFor="let mallData of allMallData " [ngValue]="mallData">{{mallData.mallName}}</option>
+      </select>
+      <!-- <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+        Power is required
+      </div> -->
+    </div>
+
+    <canvas id="myChart1"></canvas>
+    <!-- <canvas id="myChart2" *ngIf="showChart('myChart2')"></canvas>
+    <canvas id="myChart3" *ngIf="showChart('myChart3')"></canvas> -->
+
+    <!-- <canvas #canvasRef id="myChart1" *ngIf="showChart("myChart1")"></canvas> -->
+    <!-- <canvas #canvasRef id="myChart2" *ngIf="showChart("myChart2")"></canvas> -->
+    
+    <!-- <canvas #canvasRef id="myChart3"></canvas> -->
+
+    <!-- <h2>Most Expensive Day: {{expensiveDay}}</h2> -->
     <h2>Recommended Day of Visit: {{recommendedDay}}</h2>
     <!-- <a 
       routerLink="/reservation-details"
@@ -13,7 +38,27 @@
       style="text-decoration:none;">
       Make Your Reservation Now
     </a> -->
-    <div class="reservation-btn">
+
+    <div class="details">
+      <div class="location">
+
+        <div style="margin-top: 1vh;" class="title"><i class="fas fa-car-building" style="margin-right: 1vh"></i>Selected Mall</div>
+        <div style="font-size: 2.5vh;">{{selectedMall.mallName}}</div>
+        <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+
+        <div class="title"><i class="fas fa-coins" style="margin-right: 1vh"></i>Most Expensive Day</div>
+        <div style="font-size: 2.5vh;">{{expensiveDay}}</div>
+        <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+        
+        <div class="title"><i class="far fa-thumbs-up" style="margin-right: 1vh"></i>Recommended Day of Visit</div>
+        <div style="font-size: 2.5vh;">{{recommendedDay}}</div>
+        <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+
+      </div>
+    </div>
+
+
+    <div class="reservation-btn" routerLink="/reserve">
       <app-button text="Make Your Reservation"></app-button>
     </div>
   </div>
