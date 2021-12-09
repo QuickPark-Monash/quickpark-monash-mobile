@@ -37,8 +37,7 @@ Click on the link above and enjoy the webpage! Details about the webpage will be
 <h3>Viewing on your mobile device</h3> 
 If you are currently, on your mobile device, good! We tested that the best app experience is by using your mobile phone. For your convenience, scan the QR Code below to directly navigate to our website. You may also use the initial link on your mobile browser. Since not much testing as been done, we cannot guarantee absolute responsiveness for every device. If positioning seems out of place, remember to view the website through your browser using the steps above. 
 
-<p align=center><img src="https://user-images.githubusercontent.com/63769232/145397761-20d165da-b6a6-4050-b3c5-39478d2dfa4b.png"></p>
-
+<p align=center><img src="https://user-images.githubusercontent.com/63769232/145398637-ff67dcaf-bc76-42c3-9ca4-33e7e164207c.png"></p>
 
 
 <!-- to start off, run npm install on these few stuff:
