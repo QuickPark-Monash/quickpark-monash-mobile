@@ -1,1 +1,26 @@
-<p>reserve works!</p>
+<div class="reserve-wrapper">
+  <div class="reserve-header">
+    <div class="reserve-title">Reservation <span>Details</span></div>
+    <div class="title-footer">Manage all your reservations here!</div>
+  </div>
+  <div class="activeOrders">
+    <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i>Active Bookings</div>
+    <div class="footer">Select a reservation to see the details!</div>
+    <div class="reservations" *ngFor="let item of userActive">
+      <div
+      class="reservation-item"
+      (click)=onSelect(item)
+      [class.selected]="item === selectedItem">
+        <div>{{item.locationName}}</div>
+        <div class="cost">RM {{item.reservationCost}}</div>
+      </div>
+      <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+    </div>
+    <app-button (click)=addReservation() class="reservationBtn" text="Add Reservation"></app-button>
+  </div>
+  <div class="details">
+    <div *ngIf=selectedItem >Location: {{selectedItem.locationName}}</div>
+    <div>Duration: {{formattedTime}}</div>
+  </div>
+  <app-navigation class="navigation"></app-navigation>
+</div>

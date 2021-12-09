@@ -1,3 +1,4 @@
+import { ReservationItem } from "./reservationItem";
 import { Vehicle } from "./Vehicle";
 
 export interface Profile {
@@ -8,4 +9,5 @@ export interface Profile {
   profilePicture: string,
   currentVehicle: Vehicle,
   registeredVehicles: Vehicle[],
+  reservationHistory: ReservationItem[]
 }
