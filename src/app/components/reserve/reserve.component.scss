@@ -49,6 +49,7 @@
 
     .reservationBtn{
       align-self: center;
+      margin-top: 1vh;
     }
 
     .active-title{
@@ -72,7 +73,7 @@
         display: flex;
         flex-direction: row;
         margin-top: 1vh;
-        padding: 1vh;
+        padding: 1vh 1vh 1vh 1vh;
         width: 100%;
 
         .cost{

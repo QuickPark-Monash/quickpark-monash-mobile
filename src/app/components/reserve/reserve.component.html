@@ -12,7 +12,7 @@
       (click)=onSelect(item)
       [class.selected]="item === selectedItem">
         <div>{{item.locationName}}</div>
-        <div class="cost">RM {{item.reservationCost}}</div>
+        <div class="cost">{{item.parkingId}}</div>
       </div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
@@ -42,8 +42,7 @@
   </div>
   <div class="submits" *ngIf=selectedItem>
     <a class="button-1 button" (click)=changeDetails()>Change Details</a>
-    <!-- <a class="button-2 button" routerLink="/qr-scanner">Check In</a> -->
-    <a class="button-2 button" (click)=checkIn()>Check In</a>
+    <a class="button-2 button" routerLink="/qr-scanner">Check In</a>
   </div>
   <app-navigation class="navigation"></app-navigation>
 </div>

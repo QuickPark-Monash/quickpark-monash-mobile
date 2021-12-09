@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -15,6 +16,12 @@ export class QrScannerComponent implements OnInit {
   }
 
   onCodeResult(result: string){
+    Swal.fire({
+      icon: "success",
+      title: "Check in successful!",
+      text: "Enjoy your visit :)",
+      footer:"Time is starting to tick"
+    })
     this.scanResult = result
   }
 

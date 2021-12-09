@@ -28,7 +28,8 @@ export const MOCKPROFILE: Profile = {
       reservationDuration: new Date(2021, 11, 8, 16, 19, 45),
       reservationCost: 10,
       pointsEarned: 120,
-      isActive: false
+      isActive: false,
+      parkingId: "B4-J40"
     },
     {
       reservationId: 2,
@@ -38,7 +39,8 @@ export const MOCKPROFILE: Profile = {
       reservationDuration: new Date(2021, 11, 10, 16, 19, 45),
       reservationCost: 5,
       pointsEarned: 120,
-      isActive: false
+      isActive: false,
+      parkingId: "A4-0"
     },
     {
       reservationId: 3,
@@ -48,7 +50,8 @@ export const MOCKPROFILE: Profile = {
       reservationDuration: new Date(2021, 11, 15, 18, 19, 45),
       reservationCost: 10,
       pointsEarned: 120,
-      isActive: false
+      isActive: false,
+      parkingId: "ABH19"
     },
     {
       reservationId: 4,
@@ -58,7 +61,8 @@ export const MOCKPROFILE: Profile = {
       reservationDuration: new Date(2021, 12, 9, 16, 19, 45),
       reservationCost: 12,
       pointsEarned: undefined,
-      isActive: true
+      isActive: true,
+      parkingId: "KL-182-B"
     },
     {
       reservationId: 5,
@@ -68,7 +72,8 @@ export const MOCKPROFILE: Profile = {
       reservationDuration: new Date(2022, 1, 2, 16, 19, 45),
       reservationCost: 56,
       pointsEarned: undefined,
-      isActive: true
+      isActive: true,
+      parkingId: "J-10-KL"
     }
   ]
 }

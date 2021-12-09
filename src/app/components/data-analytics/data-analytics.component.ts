@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angula
 import Chart from 'chart.js/auto';
 import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
 import { MallData } from 'src/app/Interfaces/MallData';
+import Swal from 'sweetalert2';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NgbdDropdownBasic } from './dropdown-basic';
 
@@ -38,12 +39,12 @@ export class DataAnalyticsComponent implements OnInit {
   ];
   // xLabSize: number = 10;
 
-  constructor() { 
+  constructor() {
     // this.canvasRef.nativeElement.focus();
     // const canvasElement = this.canvasRef.nativeElement;
     // const canvasWidth = canvasElement.width;
     // const canvasHeight = canvasElement.height;
-    
+
     // const canvasElement = myCanvas.nativeElement;
     // const canvasWidth = this.canvasElement.width;
     // const canvasHeight = this.canvasElement.height;
@@ -53,8 +54,12 @@ export class DataAnalyticsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.mallNames)
-    console.log(this.selectedMall)
+    Swal.fire({
+      title:"Parking Data",
+      icon: "info",
+      text:"This page shows you various parking information like daily pricing for a parking location, allowing you to make informed parking choices.",
+      footer:"It is currently under construction"
+    })
     this.myChart1 = this.generateChart();
     // this.myChart2 = this.generateChart(MOCK_MALL_DATA[1], "myChart2");
     // this.myChart3 = this.generateChart(MOCK_MALL_DATA[2], "myChart3");
@@ -94,7 +99,7 @@ export class DataAnalyticsComponent implements OnInit {
       options: {
         plugins: {
           legend: {
-            
+
             align: 'center',
             display: true,
             position: 'bottom',
