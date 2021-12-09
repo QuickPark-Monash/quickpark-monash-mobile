@@ -17,6 +17,7 @@ import { WalletComponent } from './components/wallet/wallet.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { DataAnalyticsComponent } from './components/data-analytics/data-analytics.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { VehiclesComponent } from './components/vehicles/vehicles.component';
 
 // import vegaEmbedModule from 'vega-embed';
 
@@ -32,7 +33,8 @@ import { ChartComponent } from './components/chart/chart.component';
     WalletComponent,
     ReserveComponent,
     DataAnalyticsComponent,
-    ChartComponent
+    ChartComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,

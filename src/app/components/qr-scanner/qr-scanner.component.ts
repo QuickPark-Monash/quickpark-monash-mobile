@@ -13,6 +13,12 @@ export class QrScannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    Swal.fire({
+      icon: "info",
+      title: "QR Scanner",
+      text: "Scan the parking QR Code to check-in your parking space",
+      footer:"The QR Code is located on the bottom left of your parking space"
+    })
   }
 
   onCodeResult(result: string){
@@ -21,7 +27,7 @@ export class QrScannerComponent implements OnInit {
       title: "Check in successful!",
       text: "Enjoy your visit :)",
       footer:"Time is starting to tick"
-    })
+    }).then(() => window.history.go(-1))
     this.scanResult = result
   }
 

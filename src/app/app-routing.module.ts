@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
+import { VehiclesComponent } from './components/vehicles/vehicles.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "qr-scanner", component: QrScannerComponent},
   { path: "reserve", component: ReserveComponent},
   { path: "data-analytics", component: DataAnalyticsComponent},
+  { path: "vehicles", component:VehiclesComponent }
 ];
 
 @NgModule({
