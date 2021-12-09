@@ -18,6 +18,33 @@ h2{
       position: sticky;
     }
 
+    .form-group{
+        align-content: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
+        margin-top: 5vw;
+
+        .form-label{
+            color:#3F3D56;
+            font-weight: 600;
+        }
+
+        .form-control{
+            border-radius: 2em;
+            border-width : 0.2em;
+            font-weight: 500;
+
+            .form-dropdown{
+                color:#3F3D56;
+                border-radius: 5em;
+                border-width : 0.2em;
+                font-weight: 500;
+            }
+        }
+    }
+
 
     #data-title{
         font-family: 'Quicksand';
@@ -41,8 +68,16 @@ h2{
         align-self: center;
     }
 
-    #myChart{
-        width: 90vw;
+    #myChart1{
+        width: 100vw;
+        // align-self: center;
+        // align-content: center;
+        // justify-content: center;
+        margin-top: 10vh;
+    }
+
+    #chart-div{
+        width: 80%;
     }
 
     .reservation-btn{
@@ -53,5 +88,30 @@ h2{
         display: flex;
         justify-content: center;
     }
+
+    .details{
+        font-family: 'Quicksand';
+        width:80vw;
+        align-content:center;
+        justify-content: center;
+        height: auto;
+        font-weight: 700;
+        // padding: 3vh 3vh 1vh 3vh;
+        border-radius: 2vh;
+        display: flex;
+        flex-direction: column;
+    
+        .location{
+          font-size: 1em;
+    
+          .title{
+            font-size: 2.5vh;
+            color: #BABEC6;
+          }
+        }
+    }    
 }
   
+
+
+
