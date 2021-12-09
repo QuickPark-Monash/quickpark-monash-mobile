@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+
 // import * as embed from 'vega-embed';
 // import vegaEmbedModule from 'vega-embed';
 
