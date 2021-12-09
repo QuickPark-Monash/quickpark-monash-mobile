@@ -1,0 +1,83 @@
+.reserve-wrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+
+  .navigation{
+    margin-top: auto;
+    width: 100%;
+    position: sticky;
+  }
+
+  .reserve-header{
+    font-family: 'Quicksand';
+
+    .reserve-title{
+      font-size: 1.8em;
+      color: #3F3D56;
+      font-weight: 700;
+      text-align: center;
+      padding-top: 8vh;
+
+      span{
+        color: #EE786C;
+      }
+    }
+
+    .title-footer{
+      text-align: center;
+      font-weight: 700;
+      color: #BABEC6;
+    }
+  }
+
+  .activeOrders{
+    font-family: 'Quicksand';
+    width:80vw;
+    height: auto;
+    background-color: #f9fafb;
+    margin-top: 3vh;
+    font-weight: 700;
+    padding: 3vh;
+    border-radius: 2vh;
+    display: flex;
+    flex-direction: column;
+
+    .reservationBtn{
+      align-self: center;
+    }
+
+    .active-title{
+      font-size: 3vh;
+    }
+
+    .footer{
+      font-size: 1.8vh;
+      color: #BABEC6;
+    }
+
+    .selected{
+      background-color: #F1F1FB;
+      border-radius: 1vh;
+    }
+
+    .reservations{
+      margin-top: 2vh;
+
+      .reservation-item{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1vh;
+        padding: 1vh;
+        width: 100%;
+
+        .cost{
+          margin-left: auto
+        }
+      }
+    }
+  }
+}
