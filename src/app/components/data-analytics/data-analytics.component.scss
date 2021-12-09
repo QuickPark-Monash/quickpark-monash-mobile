@@ -1,68 +1,57 @@
-.data-container{   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100vw;
+h2{
     font-family: 'Quicksand';
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.data-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
   
-    #chart-div{
-        width: 80vw;
+    .navigation{
+      margin-top: auto;
+      width: 100%;
+      position: sticky;
     }
 
+
     #data-title{
-        text-align: center;
+        font-family: 'Quicksand';
         font-size: 1.8em;
+        color: #3F3D56;
         font-weight: 700;
+        text-align: center;
+        padding-top: 8vh;
+        margin: 0;
+
         span{
-            color:#EE786C;
+            color: #EE786C;
         }
     }
 
     #venue-name{
+        font-family: 'Quicksand';
         text-align: center;
         font-weight: 600;
-        font-size: 1em;
+        font-size: 1.5em;
         align-self: center;
     }
 
     #myChart{
-        width: 100%;
-        height: 100%;
+        width: 90vw;
     }
-    
+
+    .reservation-btn{
+        // font-family: 'Quicksand';
+        // font-size: 1em;
+        margin-top: 5vh;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 }
-
-
-// .qr-container{
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     flex-direction: column;
-//     height: 100%;
-//     width: 100%;
-//     font-family: 'Quicksand';
   
-//     .qr-title{
-//         font-size: 1.8em;
-//         font-weight: 700;
-//         letter-spacing: 5px;
-
-//         span{
-//             color:#EE786C;
-//         }
-//     }
-
-//     .qr-scanner{
-//         height:50vh;
-//         width: 50vw;
-//     }
-// }
-  
-
-
-
-
-
-
