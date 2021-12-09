@@ -4,7 +4,7 @@
     <div class="title-footer">Manage all your reservations here!</div>
   </div>
   <div class="activeOrders">
-    <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i>Active Bookings</div>
+    <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i> Active Bookings</div>
     <div class="footer">Select a reservation to see the details!</div>
     <div class="reservations" *ngFor="let item of userActive">
       <div
@@ -19,8 +19,31 @@
     <app-button (click)=addReservation() class="reservationBtn" text="Add Reservation"></app-button>
   </div>
   <div class="details">
-    <div *ngIf=selectedItem >Location: {{selectedItem.locationName}}</div>
-    <div>Duration: {{formattedTime}}</div>
+    <div *ngIf=!selectedItem style="font-weight: 700; text-align: center;">Please select an active booking above</div>
+    <div class="location" *ngIf=selectedItem>
+      <div class="title"><i class="fas fa-car" style="margin-right: 1vh"></i>Arrive before</div>
+      <div style="
+      font-size: 2.5vh;
+      ">
+      {{trimDate(selectedItem.reservationTime)}}
+
+      <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+
+    </div>
+      <div class="title"><i class="far fa-clock" style="margin-right: 1vh"></i>Duration</div>
+      <div style="font-size: 2.5vh;">{{formattedTime}}</div>
+
+      <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+
+      <div style="margin-top: 1vh;" class="title"><i class="fas fa-money-check-alt" style="margin-right: 1vh"></i>Cost</div>
+      <div style="font-size: 2.5vh;">RM {{selectedItem.reservationCost}}</div>
+      <hr style="background-color: #BABEC6; height: 2px; border: 0;">
+    </div>
+  </div>
+  <div class="submits" *ngIf=selectedItem>
+    <a class="button-1 button" (click)=changeDetails()>Change Details</a>
+    <!-- <a class="button-2 button" routerLink="/qr-scanner">Check In</a> -->
+    <a class="button-2 button" (click)=checkIn()>Check In</a>
   </div>
   <app-navigation class="navigation"></app-navigation>
 </div>

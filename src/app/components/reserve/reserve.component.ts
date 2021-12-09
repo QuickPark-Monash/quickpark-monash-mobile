@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationItem } from 'src/app/Interfaces/reservationItem';
 import { MOCKPROFILE } from 'src/app/MockProfiles/mockprofiles';
+
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
+import { AlertsService } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-reserve',
@@ -20,7 +23,7 @@ export class ReserveComponent implements OnInit {
 
   formattedTime?: string
 
-  constructor() { }
+  constructor(private alertService: AlertsService) { }
 
   ngOnInit(): void {
 
@@ -45,10 +48,22 @@ export class ReserveComponent implements OnInit {
     this.durationMinute = Math.floor((duration / (1000 * 60)) % 60)
     this.durationHour = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-    this.formattedTime = this.durationHour.toString().concat(`HR ${this.durationMinute} MINS : ${this.durationSecond} S`)
+    this.formattedTime = this.durationHour.toString().concat(` HR : ${this.durationMinute} MIN : ${this.durationSecond} SEC`)
   }
 
   addReservation(){
-    Swal.fire("Not Implemented")
+    this.alertService.notImplementedAlert()
+  }
+
+  trimDate(date: Date){
+    return moment(date).format("ddd[\n]MMM Do YYYY[\n]h:mm:ss a")
+  }
+
+  changeDetails(){
+    this.alertService.notImplementedAlert()
+  }
+
+  checkIn(){
+    this.alertService.notImplementedAlert()
   }
 }
