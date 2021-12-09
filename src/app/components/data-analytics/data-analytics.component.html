@@ -1,10 +1,23 @@
 
-<div class="data-container">
+<div class="data-wrapper">
   <div id="chart-div">
     <p id="data-title">Parking <span>Analytics</span></p>
-    <p id="venue-name">{{venueName}}</p>
-    <canvas id="myChart"></canvas>
+    <h1 id="venue-name">{{venueName}}</h1>
+    <canvas #canvasRef id="myChart"></canvas>
+    <h2>Most Expensive Day: {{expensiveDay}}</h2>
+    <h2>Recommended Day of Visit: {{recommendedDay}}</h2>
+    <!-- <a 
+      routerLink="/reservation-details"
+      class="reservation-btn"
+      routerLinkActive="isActive"
+      style="text-decoration:none;">
+      Make Your Reservation Now
+    </a> -->
+    <div class="reservation-btn">
+      <app-button text="Make Your Reservation"></app-button>
+    </div>
   </div>
+  <app-navigation class="navigation"></app-navigation>
 </div>
 
 
