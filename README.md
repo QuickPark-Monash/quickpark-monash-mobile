@@ -1,5 +1,5 @@
 <h1>QuickPark Website Viewing Info</h1>
-Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before we give you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>.
+Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>.
 
 <h3>Viewing on your desktop internet browser</h3> 
 <h4>Step 1: Opening Google Chrome Developer Tools</h4>
