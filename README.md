@@ -1,5 +1,6 @@
 <h1>QuickPark Website Viewing Info</h1>
-Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before we give you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>.
+Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>. <br>
+<b>THE BEST WEB APP EXPERIENCE IS THROUGH YOUR MOBILE DEVICES BROWSER!</b>
 
 <h3>Viewing on your desktop internet browser</h3> 
 <h4>Step 1: Opening Google Chrome Developer Tools</h4>
@@ -42,7 +43,7 @@ If you are currently, on your mobile device, good! We tested that the best app e
 
 <h3>Cloning the repository</h3>
 If you've chosen to look at how the insides of our web application works, the process is fairly simple. <br><br>
-1. Run <code>npm install -g @angular/cli</code> to install Angular on your local device.<br>
+1. Run <code>npm install -g @angular/cli</code> to install Angular on your local device using your terminal.<br>
 2. Next, run <code>git clone https://github.com/QuickPark-Monash/quickpark-monash-mobile.git</code> to download the files to a directory.<br>
 3. Then, run <code>npm install</code> to install all the required dependencies.<br>
 4. Run <code>ng serve</code> to host your Angular project locally, make sure you're in the project directory<br>
