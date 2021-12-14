@@ -14,7 +14,7 @@ import { AlertsService } from 'src/app/services/alerts.service';
 export class ReserveComponent implements OnInit {
 
   userActive!: ReservationItem[]
-  userHistory: ReservationItem[] = MOCKPROFILE.reservationHistory
+  userHistory: ReservationItem[] = MOCKPROFILE.reservationHistory!
   selectedItem?: ReservationItem;
 
   durationHour?: number

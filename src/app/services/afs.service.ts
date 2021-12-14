@@ -1,49 +1,72 @@
 // import { ReservationItem } from 'src/app/Interfaces/reservationItem';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { ReservationItem } from '../Interfaces/reservationItem';
 import { MallData } from '../Interfaces/MallData';
 import { User } from '../Interfaces/User';
+import { AngularFireAuth } from '@angular/fire/auth';
+// FirestoreDataConverter
 
 @Injectable({
   providedIn: 'root'
 })
 export class AfsService {
-  reservationsCollection!: AngularFirestoreCollection<ReservationItem>;
-  reservations: Observable<any>; // Observable<Item[]>
-  allUsers: Observable<any>;
-  mallsData: Observable<any>;
+  allReservationsRef: AngularFirestoreCollection<ReservationItem>;
+  allUsersRef: AngularFirestoreCollection<User>;
+  // reservations: Observable<any>; // Observable<Item[]>
+  // allUsers: Observable<any>;
+  // mallsData: Observable<any>;
   // for one user
-  currentUserReservation: Observable<any>
+  // currentUserReservation: Observable<any>
   currUser: any;
 
-  constructor(private afs: AngularFirestore) { 
+  constructor(private afs: AngularFirestore) {
     // this.reservationsCollection = this.afs.collection('reservations');
 
-    // upon sign in, put UID here
-    const uid = "0";
-    this.currUser = this.afs.collection('users').doc(uid);
-    this.reservations = this.afs.collection('reservations').valueChanges();
-    this.allUsers = this.afs.collection('users').valueChanges();
-    this.currentUserReservation = this.afs.collection('users').doc(this.currUser.uid).valueChanges();
-    this.mallsData = this.afs.collection('mallsData').valueChanges();
+    this.allReservationsRef = afs.collection('reservations');
+    this.allUsersRef = afs.collection('users');
+    // this.userReservationHistoryRef = afs.collection('users').doc("reservationHistory");
     console.log("afs generated")
   }
 
-  getReservationItems(){
-    return this.reservations;
+  // GETTER METHODS (FIRESTORE REFERENCES)
+  getReservationsRef() {
+    return this.allReservationsRef;
   }
 
   // for ADMIN, get all users
-  getAllUsers(){
-    return this.allUsers;
+  getAllUsersRef() {
+    return this.allUsersRef;
   }
 
-  // only usable after sign-in
-  getCurrentUserReservation(){
-    return this.currentUserReservation;
+  getUserRefByUid(uid: string){
+    return this.allUsersRef.doc(uid);
   }
 
-  
+  // SETTER METHODS (FIRESTORE REFERENCES)
+  // set User data, if doesnt exist, create mnew user data
+  setNewUser(newUser: User): void {
+    this.afs.collection("users").doc(newUser.UID).set(newUser).then(() => console.log("sucessfully created a new user"))
+  }
+
+  // adds a new reservation to reservationHistory
+  addNewReservation(newReservation: ReservationItem, user: User): void {
+    const newReservationHistory = user.reservationHistory!.push(newReservation)
+    this.afs.collection("users").doc(user.UID).update({reservationHistory: newReservationHistory}).then(() => console.log("sucessfully added a new reservation"))
+  }
+
+  // getAllUsers():void {
+  //   this.getAllUsersRef().snapshotChanges().pipe(
+  //     map(changes =>
+  //       changes.map(c =>
+  //         ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+  //       )
+  //     )
+  //   ).subscribe(data => {
+  //     this.tutorials = data;
+  //   });
+  // }
+
 }

@@ -22,14 +22,14 @@ export class TestingComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('OnInit ran');
-    this.afsService.getReservationItems().subscribe((reservationItems: ReservationItem[]) => {
+    this.afsService.getReservationsRef().valueChanges().subscribe((reservationItems: ReservationItem[]) => {
       // console.log(items);
       this.reservations = reservationItems;
     })
-    this.afsService.getAllUsers().subscribe((users: User[]) => {
+    this.afsService.getAllUsersRef().valueChanges().subscribe((users: User[]) => {
       this.users = users;
     })
-    this.afsService.getAllUsers().subscribe((users: User[]) => {
+    this.afsService.getAllUsersRef().valueChanges().subscribe((users: User[]) => {
       this.users = users;
     })
   }

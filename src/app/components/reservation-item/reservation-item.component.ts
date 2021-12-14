@@ -15,7 +15,7 @@ export class ReservationItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.afsService.getReservationItems().subscribe((reservations: ReservationItem[]) => {
+    this.afsService.getReservationsRef().valueChanges().subscribe((reservations: ReservationItem[]) => {
       // console.log(items);
       this.reservations = reservations;
     })

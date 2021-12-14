@@ -10,7 +10,7 @@
 <div *ngIf="users.length > 0;else noItems">
     <h1>All Users</h1>
     <ul *ngFor="let user of users" class="collection" >
-        <li class="collection-item">{{user.uid}} {{user.displayName}}</li>
+        <li class="collection-item">{{user.UID}} {{user.displayName}}</li>
     </ul>
     <!-- <li class="text" *ngFor="let item of items">
         {{item.title}}
