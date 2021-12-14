@@ -1,1 +1,40 @@
-<p>sign-up works!</p>
+<div class="signUp-container">
+  <div class="signUp-header">
+    <div class="signUp-title">Quick<span>Park</span></div>
+    <div class="signUp-footer">Register to get a <br>better parking experience</div>
+    <img class="signUp-logo" src="assets/Images/logo.png">
+  </div>
+  <form class="input-fields">
+    <div class="personal-inf">
+      <div
+      class="info-title">Personal Information</div>
+      <input
+      [(ngModel)] = "displayName"
+      name="displayName"
+      class="input-field" type="text" placeholder="Display Name">
+      <input
+      [(ngModel)] = "emailAddress"
+      name="emailAddress"
+      name="loginPassword"
+      class="input-field" type="email" placeholder="Email Address">
+    </div>
+    <div class="user-inf">
+      <div class="info-title">Account Details</div>
+      <input
+      [(ngModel)] = "carPlateNo"
+      name="carPlateNo"
+      class="input-field" type="text" placeholder="Car Plate Number">
+      <input
+      [(ngModel)] = "signUpPassword"
+      name="signUpPassword"
+      class="input-field" type="password" placeholder="Password">
+      <input
+      [(ngModel)] = "confirmPass"
+      name="confirmPass"
+      class="input-field" type="password" placeholder="Confirm Password">
+      <!-- <div *ngIf=confirmCheck() style="font-weight: 700; font-size: 0.8em; color:red">Password Not Same</div> -->
+    </div>
+  </form>
+  <div
+  (click)=signUp() class="signUpBtn">Sign-Up Now</div>
+</div>

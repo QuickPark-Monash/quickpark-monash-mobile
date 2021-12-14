@@ -45,7 +45,7 @@ export class AuthService {
         text: "You may log in now",
         icon: "success"
       }).then(() => {
-        this.router.navigate(['login'])
+        this.router.navigate([""])
       })
     }).catch(()=>{
       Swal.fire({

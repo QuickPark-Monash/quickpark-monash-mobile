@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: "reserve", component: ReserveComponent},
   { path: "data-analytics", component: DataAnalyticsComponent},
   { path: "vehicles", component:VehiclesComponent },
-  { path: "testing", component:TestingComponent },
+  // { path: "testing", component:TestingComponent },
   { path: "signUp", component:SignUpComponent }
 ];
 

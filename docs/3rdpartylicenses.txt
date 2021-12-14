@@ -4,6 +4,9 @@ MIT
 @angular/core
 MIT
 
+@angular/fire
+MIT
+
 @angular/forms
 MIT
 
@@ -12,6 +15,24 @@ MIT
 
 @angular/router
 MIT
+
+@firebase/app
+Apache-2.0
+
+@firebase/component
+Apache-2.0
+
+@firebase/firestore
+Apache-2.0
+
+@firebase/logger
+Apache-2.0
+
+@firebase/util
+Apache-2.0
+
+@firebase/webchannel-wrapper
+Apache-2.0
 
 @sweetalert2/ngx-sweetalert2
 
@@ -82,6 +103,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 chart.js-auto
+
+firebase/app
+
+firebase/auth
+
+firebase/firestore
 
 moment
 MIT
