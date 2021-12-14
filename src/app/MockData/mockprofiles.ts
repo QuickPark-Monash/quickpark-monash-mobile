@@ -4,6 +4,7 @@ import { ParkingSpace } from './../Interfaces/ParkingSpace';
 
 
 export const MOCKPROFILE: User = {
+  uid: "0",
   displayName: "Zach Khong",
   firstName: "Zach",
   lastName: "Khong",

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationItem } from 'src/app/Interfaces/reservationItem';
+import { User } from 'src/app/Interfaces/User';
 import { AfsService } from '../../services/afs.service';
 
 @Component({
@@ -10,9 +11,13 @@ import { AfsService } from '../../services/afs.service';
 
 export class TestingComponent implements OnInit {
   reservations: ReservationItem[];
+  users: User[];
+  modelUserId:number;
 
   constructor(private afsService: AfsService) { 
     this.reservations = [];
+    this.users = [];
+    this.modelUserId = 0;
   }
 
   ngOnInit(): void {
@@ -20,6 +25,12 @@ export class TestingComponent implements OnInit {
     this.afsService.getReservationItems().subscribe((reservationItems: ReservationItem[]) => {
       // console.log(items);
       this.reservations = reservationItems;
+    })
+    this.afsService.getAllUsers().subscribe((users: User[]) => {
+      this.users = users;
+    })
+    this.afsService.getAllUsers().subscribe((users: User[]) => {
+      this.users = users;
     })
   }
 }
