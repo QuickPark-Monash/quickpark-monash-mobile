@@ -9,17 +9,20 @@ import { WalletComponent } from './components/wallet/wallet.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { TestingComponent } from './components/testing/testing.component';
+import { AuthGuard } from './auth.guard';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
-  { path: "profile-page", component: ProfilePageComponent},
+  { path: "profile-page", component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: "wallet", component: WalletComponent},
   { path: "qr-scanner", component: QrScannerComponent},
   { path: "reserve", component: ReserveComponent},
   { path: "data-analytics", component: DataAnalyticsComponent},
   { path: "vehicles", component:VehiclesComponent },
-  { path: "testing", component:TestingComponent }
+  { path: "testing", component:TestingComponent },
+  { path: "signUp", component:SignUpComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "quickpark-7b0ee": {
+      "hosting": {
+        "quickpark-monash-mobile": [
+          "quickpark-7b0ee"
+        ]
+      }
+    }
+  }
+}
