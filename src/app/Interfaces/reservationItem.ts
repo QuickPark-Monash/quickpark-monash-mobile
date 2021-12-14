@@ -1,3 +1,4 @@
+
 export interface ReservationItem {
   reservationId: number;
   locationName: string;
@@ -9,3 +10,20 @@ export interface ReservationItem {
   pointsEarned?: number;
   isActive: boolean;
 }
+
+// export interface ReservationItem {
+//   reservationId: number;
+//   locationName: string;
+//   parkingId: string;
+//   carPlate: string;
+//   reservationTime: number;
+//   reservationDuration: number;
+//   reservationCost?: number;
+//   pointsEarned?: number;
+//   isActive: boolean;
+// }
+
+
+
+
+
