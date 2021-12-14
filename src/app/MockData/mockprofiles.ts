@@ -1,10 +1,14 @@
-import { Profile } from "../Interfaces/User";
+import { ReservationItem } from './../Interfaces/reservationItem';
+import { User } from "../Interfaces/User";
+import { ParkingSpace } from './../Interfaces/ParkingSpace';
 
-export const MOCKPROFILE: Profile = {
+
+export const MOCKPROFILE: User = {
   displayName: "Zach Khong",
   firstName: "Zach",
   lastName: "Khong",
   profilePicture: "assets/profile_pics/zach-khong.png",
+  walletBalance: 50,
   currentVehicle: {
     id: 1,
     vehicleName: "Mini Cooper Convertible",
@@ -24,56 +28,59 @@ export const MOCKPROFILE: Profile = {
       reservationId: 1,
       locationName: "NU Sentral Brickfields",
       carPlate: "WIN 1980",
+      reservedParking: new ParkingSpace("B4-J40",100,10,true,false,),
       reservationTime: new Date(2021, 11, 8, 10, 19, 45),
       reservationDuration: new Date(2021, 11, 8, 16, 19, 45),
       reservationCost: 10,
       pointsEarned: 120,
       isActive: false,
-      parkingId: "B4-J40"
     },
     {
       reservationId: 2,
       locationName: "Suria KLCC",
       carPlate: "WIN 1980",
+      reservedParking: new ParkingSpace("A4-0",100,10,true,false,),
       reservationTime: new Date(2021, 11, 10, 10, 19, 45),
       reservationDuration: new Date(2021, 11, 10, 16, 19, 45),
       reservationCost: 5,
       pointsEarned: 120,
       isActive: false,
-      parkingId: "A4-0"
+      // parkingId: "A4-0"
     },
     {
       reservationId: 3,
       locationName: "Pavillion Kuala Lumpur",
       carPlate: "WIN 1980",
+      reservedParking: new ParkingSpace("ABH19",100,10,true,false,),
       reservationTime: new Date(2021, 11, 15, 14, 19, 45),
       reservationDuration: new Date(2021, 11, 15, 18, 19, 45),
       reservationCost: 10,
       pointsEarned: 120,
       isActive: false,
-      parkingId: "ABH19"
     },
     {
       reservationId: 4,
       locationName: "Genting Highlands",
       carPlate: "WIN 1980",
+      reservedParking: new ParkingSpace("KL-182-B",100,10,true,false,),
       reservationTime: new Date(2021, 12, 9, 15, 19, 45),
       reservationDuration: new Date(2021, 12, 9, 16, 19, 45),
       reservationCost: 12,
       pointsEarned: undefined,
       isActive: true,
-      parkingId: "KL-182-B"
+      // parkingId: "KL-182-B"
     },
     {
       reservationId: 5,
       locationName: "KLIA Airport",
       carPlate: "WIN 1980",
+      reservedParking: new ParkingSpace("J-10-KL",100,10,true,false,),
       reservationTime: new Date(2022, 1, 2, 10, 19, 45),
       reservationDuration: new Date(2022, 1, 2, 16, 19, 45),
       reservationCost: 56,
       pointsEarned: undefined,
       isActive: true,
-      parkingId: "J-10-KL"
+      // parkingId: "J-10-KL"
     }
   ]
 }

@@ -1,7 +1,9 @@
 import { ParkingSpace } from './ParkingSpace';
+import { User } from './User';
 
 export interface ReservationItem {
   reservationId: number;
+  // reservedBy: User;
   locationName: string;
   carPlate: string;
   reservedParking: ParkingSpace;
