@@ -1,0 +1,16 @@
+<div *ngIf="reservations.length > 0;else noItems">
+    <ul *ngFor="let reservation of reservations" class="collection" >
+        <li class="collection-item">{{reservation.reservationId}} {{reservation.locationName}}</li>
+    </ul>
+    <!-- <li class="text" *ngFor="let item of items">
+        {{item.title}}
+    </li> -->
+</div>
+
+
+<ng-template #noItems>
+    <hr>
+    <h5>There are no items to list</h5>
+</ng-template>
+
+

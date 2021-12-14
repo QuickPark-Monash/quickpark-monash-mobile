@@ -22,6 +22,7 @@ import { DataAnalyticsComponent } from './components/data-analytics/data-analyti
 import { ChartComponent } from './components/chart/chart.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { ReservationItemComponent } from './components/reservation-item/reservation-item.component';
+import { TestingComponent } from './components/testing/testing.component';
 
 // import vegaEmbedModule from 'vega-embed';
 
@@ -39,7 +40,8 @@ import { ReservationItemComponent } from './components/reservation-item/reservat
     DataAnalyticsComponent,
     ChartComponent,
     VehiclesComponent,
-    ReservationItemComponent
+    ReservationItemComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,

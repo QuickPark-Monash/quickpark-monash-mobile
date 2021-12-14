@@ -25,7 +25,7 @@ export class DataAnalyticsComponent implements OnInit {
   selectedMall: MallData = MOCK_MALL_DATA[0];
   mallIds: Array<number> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
   mallNames: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallName));
-  weeklyPrices: Array<number> = this.selectedMall.weeklyPrices;
+  weeklyPrices: Array<number> = this.selectedMall.parkingLot.weeklyPrices;
   days: Array<string> = ['Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   expensiveDay: string = this.days[this.arrayMax(this.weeklyPrices)];
   recommendedDay: string = this.days[this.arrayMin(this.weeklyPrices)];
@@ -74,21 +74,21 @@ export class DataAnalyticsComponent implements OnInit {
         datasets: [
           {
             label: MOCK_MALL_DATA[0].mallName,
-            data: MOCK_MALL_DATA[0].weeklyPrices,
+            data: MOCK_MALL_DATA[0].parkingLot.weeklyPrices,
             backgroundColor: this.bgColorArr[0],
             borderColor: this.bgColorArr[0],
             borderWidth: 1
           },
           {
             label: MOCK_MALL_DATA[1].mallName,
-            data: MOCK_MALL_DATA[1].weeklyPrices,
+            data: MOCK_MALL_DATA[1].parkingLot.weeklyPrices,
             backgroundColor: this.bgColorArr[1],
             borderColor: this.bgColorArr[1],
             borderWidth: 1
           },
           {
             label: MOCK_MALL_DATA[2].mallName,
-            data: MOCK_MALL_DATA[2].weeklyPrices,
+            data: MOCK_MALL_DATA[2].parkingLot.weeklyPrices,
             backgroundColor: this.bgColorArr[2],
             borderColor: this.bgColorArr[2],
             borderWidth: 1

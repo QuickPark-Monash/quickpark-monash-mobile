@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationItem } from 'src/app/Interfaces/reservationItem';
-import { AfsServiceService } from './../../services/afs-service.service';
+import { AfsService} from './../../services/afs.service';
 
 @Component({
   selector: 'app-reservation-item',
@@ -10,7 +10,7 @@ import { AfsServiceService } from './../../services/afs-service.service';
 export class ReservationItemComponent implements OnInit {
   reservations: ReservationItem[];
     
-  constructor(private afsService: AfsServiceService) {
+  constructor(private afsService: AfsService) {
     this.reservations = [];
   }
 

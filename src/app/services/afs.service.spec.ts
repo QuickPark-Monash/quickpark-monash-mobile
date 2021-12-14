@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AfsServiceService } from './afs-service.service';
+import { AfsService } from './afs.service';
 
 describe('AfsServiceService', () => {
-  let service: AfsServiceService;
+  let service: AfsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AfsServiceService);
+    service = TestBed.inject(AfsService);
   });
 
   it('should be created', () => {

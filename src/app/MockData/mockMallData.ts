@@ -1,5 +1,6 @@
 import { MallData } from "../Interfaces/MallData";
 import { ParkingFees } from "../Interfaces/ParkingFees";
+import { ParkingLot } from './../Interfaces/ParkingLot';
 
 // mock yp weekly prices
 // const priceArr1: Array<ParkingFees> = [
@@ -31,24 +32,62 @@ import { ParkingFees } from "../Interfaces/ParkingFees";
 //     {day: "Sunday", price: 20}
 // ]
 
-const priceArr1: Array<number> = [10,11,12,13,14,15,16];
-const priceArr2: Array<number> = [16,15,14,13,12,11,10];
-const priceArr3: Array<number> = [10,20,30,40,30,20,10];
+const priceArr1: number[] = [10,11,12,13,14,15,16];
+const priceArr2: number[] = [16,15,14,13,12,11,10];
+const priceArr3: number[] = [10,20,30,40,30,20,10];
+
+const mParkSpaces1 = [
+    {
+        parkingId: "0",
+        time: 0,
+        fee: 10,
+        isBooked: false,
+        isOccupied: false
+    },
+    {
+        parkingId: "1",
+        time: 0,
+        fee: 10,
+        isBooked: false,
+        isOccupied: false
+    },
+    {
+        parkingId: "2",
+        time: 0,
+        fee: 10,
+        isBooked: false,
+        isOccupied: false
+    }
+]
+
 
 export const MOCK_MALL_DATA: Array<MallData> = [
     {
         mallId: 0,
         mallName: "Mid Valley",
-        weeklyPrices: priceArr1
+        parkingLot: {
+            capacity:2,
+            parkingSpaces: mParkSpaces1,
+            weeklyPrices: priceArr1
+        }
+        // weeklyPrices: priceArr1
     },
     {
         mallId: 1,
         mallName: "One Utama",
-        weeklyPrices: priceArr2
+        parkingLot: {
+            capacity:2,
+            parkingSpaces: mParkSpaces1,
+            weeklyPrices: priceArr2
+        }
     },
     {
         mallId: 2,
         mallName: "Sunway Velocity",
-        weeklyPrices: priceArr3
+        parkingLot: {
+            capacity:2,
+            parkingSpaces: mParkSpaces1,
+            weeklyPrices: priceArr3
+        }
     }
 ]

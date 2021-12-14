@@ -8,6 +8,8 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { WalletComponent } from './components/wallet/wallet.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
+import { TestingComponent } from './components/testing/testing.component';
+
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path: "qr-scanner", component: QrScannerComponent},
   { path: "reserve", component: ReserveComponent},
   { path: "data-analytics", component: DataAnalyticsComponent},
-  { path: "vehicles", component:VehiclesComponent }
+  { path: "vehicles", component:VehiclesComponent },
+  { path: "testing", component:TestingComponent }
 ];
 
 @NgModule({

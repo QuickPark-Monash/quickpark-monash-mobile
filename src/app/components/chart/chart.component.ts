@@ -14,7 +14,7 @@ export class ChartComponent implements OnInit {
   selectedMall: MallData = MOCK_MALL_DATA[0];
   mallIds: Array<number> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
   mallNames: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallName));
-  weeklyPrices: Array<number> = this.selectedMall.weeklyPrices;
+  weeklyPrices: Array<number> = this.selectedMall.parkingLot.weeklyPrices;
 
   days: Array<string> = ['Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   expensiveDay: string = this.days[this.arrayMax(this.weeklyPrices)];
@@ -30,7 +30,7 @@ export class ChartComponent implements OnInit {
   chartData = {
     labels: this.days,
     datasets: [{
-      data: this.selectedMall.weeklyPrices,
+      data: this.selectedMall.parkingLot.weeklyPrices,
       backgroundColor: this.bgColorArr,
       borderColor: this.bgColorArr,
       borderWidth: 1
