@@ -15,4 +15,6 @@ export class AlertsService {
       text: "This will be implemented soon. Stay tuned :)"
     })
   }
+
+  
 }

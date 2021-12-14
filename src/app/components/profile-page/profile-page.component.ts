@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from 'src/app/Interfaces/Profile';
+import { User } from 'src/app/Interfaces/User';
 import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 
 @Component({
@@ -9,11 +9,12 @@ import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 })
 export class ProfilePageComponent implements OnInit {
 
-  user: Profile = MOCKPROFILE
+  user: User = MOCKPROFILE
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

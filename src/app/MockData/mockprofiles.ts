@@ -1,4 +1,4 @@
-import { Profile } from "../Interfaces/Profile";
+import { Profile } from "../Interfaces/User";
 
 export const MOCKPROFILE: Profile = {
   displayName: "Zach Khong",
