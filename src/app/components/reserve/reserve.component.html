@@ -12,7 +12,7 @@
       (click)=onSelect(item)
       [class.selected]="item === selectedItem">
         <div>{{item.locationName}}</div>
-        <div class="cost">{{item.parkingId}}</div>
+        <div class="cost">{{item.reservedParking.parkingId}}</div>
       </div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
