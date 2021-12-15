@@ -13,28 +13,35 @@ import { ReservationItem } from 'src/app/Interfaces/reservationItem';
 
 export class ParkingSpace{
     parkingId: string;
-    // reservationItem: ReservationItem;
     time: number;
     fee: number;
+    // bookedTimeSlot: Date;
+    // bookedDuration: number;
+    // bookedByUid: number | null;
+    // occupiedByUid: number | null;
     isBooked: boolean;
     isOccupied: boolean;
-    // bookedUser: User;
     constructor( 
         parkingId: string, 
         // reservationItem: ReservationItem,
         time: number,
         fee: number,
+        // bookedTimeSlot: Date,
+        // bookedDuration: number,
+        // bookedByUid: number | null,
+        // occupiedByUid: number | null    
         isBooked: boolean,
         isOccupied: boolean,
-        // bookedUser: User
     ){
         this.parkingId=parkingId, 
-        // this.reservationItem= reservationItem,
         this.time=time,
         this.fee= fee,
+        // this.bookedTimeSlot= bookedTimeSlot,
+        // this.bookedDuration= bookedDuration,
+        // this.bookedByUid = bookedByUid,
+        // this.occupiedByUid = occupiedByUid;
         this.isBooked=isBooked,
         this.isOccupied=isOccupied
-        // this.bookedUser=bookedUser
     }
 
     // parkingId(){return this.parkingId}, 

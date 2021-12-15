@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
+import { User } from 'src/app/Interfaces/User';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class QrScannerComponent implements OnInit {
   scanResult: any = '';
-  title: string ="QR Code Scanner"
+  title: string ="QR Code Scanner";
   scanned?: boolean;
 
   constructor() { }
@@ -25,13 +27,44 @@ export class QrScannerComponent implements OnInit {
 
   onCodeResult(result: string){
     this.scanned = true;
-    Swal.fire({
-      icon: "success",
-      title: "Check in successful!",
-      text: "Enjoy your visit :)",
-      footer:"Time is starting to tick"
-    }).then(() => window.history.go(-1))
+
+    if (this.isValidScan(result)){
+      Swal.fire({
+        icon: "success",
+        title: "Check in successful!",
+        text: "Enjoy your visit :)",
+        footer:"Time is starting to tick"
+      }).then(() => window.history.go(-1))
+    }
+    else{
+      Swal.fire({
+        icon: "error",
+        title: "Check in failure",
+        text: "Invalid check in :("
+      }).then(() => window.history.go(-1))
+    }
     this.scanResult = result
   }
 
+  // checks whether the scanned car park is valid (MEDIUM MALL PACKAGE: scan twice system)
+  // assume that the resultStr is in json string format
+  isValidScan(resultStr: string){
+    const parkSpace = this.parseParkingSpace(resultStr);
+    return this.isParkable(parkSpace)
+  }
+
+  isParkable(parkSpace: ParkingSpace){
+    const parkable = !parkSpace.isOccupied
+    return parkable
+  }
+
+  parseParkingSpace(jsonStr: string){
+    const parkSpace: ParkingSpace = JSON.parse(jsonStr);
+    console.log(parkSpace.parkingId, parkSpace.isBooked, parkSpace.isOccupied);
+    return parkSpace
+  }
+
+  // upon successful scan, sets
+  flipActiveBooking(){
+  }
 }
