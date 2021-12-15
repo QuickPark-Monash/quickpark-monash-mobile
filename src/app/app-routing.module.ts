@@ -17,14 +17,14 @@ import { AddReservationComponent } from './components/add-reservation/add-reserv
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "profile-page", component: ProfilePageComponent, canActivate: [AuthGuard]},
-  { path: "wallet", component: WalletComponent},
-  { path: "qr-scanner", component: QrScannerComponent},
-  { path: "reserve", component: ReserveComponent},
-  { path: "data-analytics", component: DataAnalyticsComponent},
-  { path: "vehicles", component:VehiclesComponent },
+  { path: "wallet", component: WalletComponent, canActivate: [AuthGuard]},
+  { path: "qr-scanner", component: QrScannerComponent, canActivate: [AuthGuard]},
+  { path: "reserve", component: ReserveComponent, canActivate: [AuthGuard]},
+  { path: "data-analytics", component: DataAnalyticsComponent,canActivate: [AuthGuard]},
+  { path: "vehicles", component:VehiclesComponent,canActivate: [AuthGuard] },
   // { path: "testing", component:TestingComponent },
   { path: "signUp", component:SignUpComponent },
-  { path: "addReservation", component:AddReservationComponent }
+  { path: "addReservation", component:AddReservationComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

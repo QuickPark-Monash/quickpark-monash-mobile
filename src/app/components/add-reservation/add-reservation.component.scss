@@ -1,6 +1,6 @@
 .reserve-wrapper{
   width: 100%;
-  height: 50vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,14 +48,21 @@
       color: white;
     }
 
-    select{
+    .timer{
+      display: flex;
+      flex-direction: row;
+
+      #formatted{
+        margin-left: auto;
+      }
+
+    }
+
+    select, .selector{
+      -webkit-appearance: none;
+      display: flex;
       flex: 1;
       border-radius: 0.8em;
-      // background-image: url('../../../assets/Images/user-solid.svg');
-      // background-repeat: no-repeat;
-      // background-size: 20px 20px;
-      // background-position: 10px 10px;
-      // padding-left: 40px;
       margin-top: 1vh;
       padding: 1vh 20px 1vh 20px;
       color: #0F123F;
@@ -66,14 +73,89 @@
       font-family: 'Quicksand', 'FontAwesome';
     }
 
-    input::placeholder{
+    .selector::placeholder{
       font-family: 'Quicksand';
       font-weight: 600;
     }
 
-    select:focus{
-      border-color: none;
+    select, .selector:focus{
       outline: none;
+    }
+
+    #myRange{
+      height: 3vh;
+      margin-top: 1vh;
+    }
+
+    input[type=range]::-ms-track {
+      width: 100%;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      border-width: 16px 0;
+      color: white;
+    }
+
+    input[type=range]::-ms-fill-lower {
+      background: #2a6495;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+
+    input[type=range]::-ms-fill-upper {
+      background: #3071a9;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #367ebd;
+    }
+
+  }
+  .details{
+    font-family: 'Quicksand';
+    width:80vw;
+    height: auto;
+    font-weight: 700;
+    padding: 3vh 3vh 1vh 3vh;
+    border-radius: 2vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+
+    .location{
+      font-size: 1em;
+
+      .title{
+        font-size: 2.5vh;
+        color: #BABEC6;
+      }
+    }
+
+  }
+
+  .submits{
+    font-family: "Quicksand";
+    font-size: 2vh;
+    display:flex;
+    font-weight: 700;
+    gap: 1vh;
+
+    .button{
+      padding: 1vh 3vh 1vh 3vh;
+      border-radius: 1vh;
+      color: white;
+      text-decoration: none;
+    }
+
+    .button-1{
+      background-color: #0F123F;
+    }
+
+    .button-2{
+      background-color: #EE786C;
     }
   }
 }
