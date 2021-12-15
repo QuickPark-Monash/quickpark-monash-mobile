@@ -56,17 +56,4 @@ export class AfsService {
     const newReservationHistory = user.reservationHistory!.push(newReservation)
     this.afs.collection("users").doc(user.UID).update({reservationHistory: newReservationHistory}).then(() => console.log("sucessfully added a new reservation"))
   }
-
-  // getAllUsers():void {
-  //   this.getAllUsersRef().snapshotChanges().pipe(
-  //     map(changes =>
-  //       changes.map(c =>
-  //         ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-  //       )
-  //     )
-  //   ).subscribe(data => {
-  //     this.tutorials = data;
-  //   });
-  // }
-
 }

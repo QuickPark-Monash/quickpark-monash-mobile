@@ -11,6 +11,7 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { TestingComponent } from './components/testing/testing.component';
 import { AuthGuard } from './auth.guard';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: "data-analytics", component: DataAnalyticsComponent},
   { path: "vehicles", component:VehiclesComponent },
   // { path: "testing", component:TestingComponent },
-  { path: "signUp", component:SignUpComponent }
+  { path: "signUp", component:SignUpComponent },
+  { path: "addReservation", component:AddReservationComponent }
 ];
 
 @NgModule({

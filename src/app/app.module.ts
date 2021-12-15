@@ -9,6 +9,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,6 +27,7 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { ReservationItemComponent } from './components/reservation-item/reservation-item.component';
 import { TestingComponent } from './components/testing/testing.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
 
 // import vegaEmbedModule from 'vega-embed';
 
@@ -44,7 +47,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     VehiclesComponent,
     ReservationItemComponent,
     TestingComponent,
-    SignUpComponent
+    SignUpComponent,
+    AddReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // for firestore,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

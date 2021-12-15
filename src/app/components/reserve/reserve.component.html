@@ -16,7 +16,7 @@
       </div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
-    <app-button (click)=addReservation() class="reservationBtn" text="Add Reservation"></app-button>
+    <app-button routerLink="/addReservation" class="reservationBtn" text="Add Reservation"></app-button>
   </div>
   <div class="details">
     <div *ngIf=!selectedItem style="font-weight: 700; text-align: center;">Please select an active booking above</div>

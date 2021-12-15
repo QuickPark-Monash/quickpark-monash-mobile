@@ -1,24 +1,30 @@
+<ngx-spinner
+bdColor = "rgb(0,0,0,1)"
+size = "medium"
+color = "#f1f1fb"
+type = "ball-fussion"
+*ngIf="!user"></ngx-spinner>
 <div class="dashboard-wrapper">
   <div class="profile-header">
     <div class="screen-title">Profile <span>Page</span></div>\
     <div class="picAndDesc">
       <!-- <img class="profileImage" src="assets/profile_pics/zach-khong.png"> -->
-      <img class="profileImage" src="{{user.profilePicture}}">
+      <img *ngIf="user" class="profileImage" src="{{user.profilePicture}}">
       <div class="profileDesc">
         <div style="color: #F1F1FB; font-weight: 600;">Your current balance</div>
         <div style="color: #EE786C; font-weight: 600;">Wallet Balance</div>
-        <div style="font-weight: 700; color: #F1F1FB; font-size: 1.8em;">RM {{user.walletBalance}}</div>
+        <div *ngIf="user" style="font-weight: 700; color: #F1F1FB; font-size: 1.8em;">RM {{user.walletBalance}}</div>
         <div routerLink="/wallet" class="topUpBtn">Top Up Balance</div>
       </div>
     </div>
-    <div class="profileName"><span style="font-weight: 400;">Welcome, &nbsp;</span>{{user.displayName}}</div>
+    <div *ngIf="user" class="profileName"><span style="font-weight: 400;">Welcome, &nbsp;</span>{{user.displayName}}</div>
   </div>
   <div class="profile-body">
     <!-- <img class="carImage" src="assets/profile_pics/zach-car.png"> -->
-    <img class="carImage" src="{{user.currentVehicle!.vehicleImage}}">
+    <img *ngIf="user" class="carImage" src="{{user.currentVehicle!.vehicleImage}}">
     <div class="carDescTitle">Registered Car Model</div>
-    <div class="carName">{{user.currentVehicle!.vehicleName}}</div>
-    <div class="carPlate">{{user.currentVehicle!.vehiclePlate}} | {{user.pointsBalance}} points</div>
+    <div *ngIf="user" class="carName">{{user.currentVehicle!.vehicleName}}</div>
+    <div *ngIf="user" class="carPlate">{{user.currentVehicle!.vehiclePlate}} | {{user.pointsBalance}} points</div>
     <div routerLink= "/vehicles" class="changeCarButton">Tap to change vehicle</div>
   </div>
   <app-navigation class="navigation"></app-navigation>

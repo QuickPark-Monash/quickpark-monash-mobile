@@ -1,0 +1,19 @@
+<div class="reserve-wrapper">
+  <div class="reserve-header">
+    <div class="reserve-title">Add <span>Reservation</span></div>
+    <div class="title-footer">Book a sweet parking spot!</div>
+  </div>
+  <div class="selections-wrapper">
+    <div class="selection-title">Select a location</div>
+    <select placeholder="Choose a mall" class="custom-select" (change)="changeMall($event)">
+      <option value="">Choose a mall</option>
+      <option *ngFor="let mall of malls">{{mall}}</option>
+    </select>
+    <div class="selection-title">Select a location</div>
+    <select placeholder="Choose a mall" class="custom-select" (change)="changeMall($event)">
+      <option value="">Choose a mall</option>
+      <option *ngFor="let mall of malls">{{mall}}</option>
+    </select>
+  </div>
+</div>
+

@@ -1,0 +1,79 @@
+.reserve-wrapper{
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3F3D56;
+  border-radius: 0 0 2em 2em;
+
+  .navigation{
+    margin-top: auto;
+    width: 100%;
+    position: sticky;
+  }
+
+  .reserve-header{
+    font-family: 'Quicksand';
+
+    .reserve-title{
+      font-size: 1.8em;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      padding-top: 8vh;
+      margin: none;
+
+      span{
+        color: #EE786C;
+      }
+    }
+
+    .title-footer{
+      text-align: center;
+      font-weight: 700;
+      color: #BABEC6;
+    }
+  }
+
+  .selections-wrapper{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+
+    .selection-title{
+      font-size: 1.2em;
+      font-weight: 700;
+      color: white;
+    }
+
+    select{
+      flex: 1;
+      border-radius: 0.8em;
+      // background-image: url('../../../assets/Images/user-solid.svg');
+      // background-repeat: no-repeat;
+      // background-size: 20px 20px;
+      // background-position: 10px 10px;
+      // padding-left: 40px;
+      margin-top: 1vh;
+      padding: 1vh 20px 1vh 20px;
+      color: #0F123F;
+      font-size: 1em;
+      font-weight: 600;
+      border: none;
+      height: 40px;
+      font-family: 'Quicksand', 'FontAwesome';
+    }
+
+    input::placeholder{
+      font-family: 'Quicksand';
+      font-weight: 600;
+    }
+
+    select:focus{
+      border-color: none;
+      outline: none;
+    }
+  }
+}
