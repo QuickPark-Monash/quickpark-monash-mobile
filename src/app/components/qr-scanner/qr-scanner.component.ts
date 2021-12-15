@@ -27,22 +27,34 @@ export class QrScannerComponent implements OnInit {
 
   onCodeResult(result: string){
     this.scanned = true;
+    const validFireObj = {
+      icon: "success",
+      title: "Check in successful!",
+      text: "Enjoy your visit :)",
+      footer:"Time is starting to tick"
+    };
+    const invalidFireObj = {
+      icon: "error",
+      title: "Check in failure",
+      text: "Invalid check in :("
+    };
+    var popUpFireObj: any = this.isValidScan(result)? validFireObj : invalidFireObj
+    Swal.fire(popUpFireObj).then(() => window.history.go(-1))
 
-    if (this.isValidScan(result)){
-      Swal.fire({
-        icon: "success",
-        title: "Check in successful!",
-        text: "Enjoy your visit :)",
-        footer:"Time is starting to tick"
-      }).then(() => window.history.go(-1))
-    }
-    else{
-      Swal.fire({
-        icon: "error",
-        title: "Check in failure",
-        text: "Invalid check in :("
-      }).then(() => window.history.go(-1))
-    }
+    // if (this.isValidScan(result)){
+    // Swal.fire({
+    //   icon: "success",
+    //   title: "Check in successful!",
+    //   text: "Enjoy your visit :)",
+    //   footer:"Time is starting to tick"
+    // }).then(() => window.history.go(-1))
+    // else{
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Check in failure",
+    //     text: "Invalid check in :("
+    //   }).then(() => window.history.go(-1))
+    // }
     this.scanResult = result
   }
 

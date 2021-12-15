@@ -7,7 +7,8 @@
     <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i> Active Bookings</div>
     <div class="footer">Select a reservation to see the details!</div>
     <div class="parent-reservation">
-      <div class="reservations" *ngFor="let item of userActiveReservations">
+      <div class="reservations" [ngIf]="!(userActiveReservations.length > 0)"><p>Currently No Active Bookings</p></div>
+      <div class="reservations" *ngFor="let item of userActiveReservations" [ngIf]="userActiveReservations.length > 0">
         <div
         class="reservation-item"
         (click)=onSelect(item)
