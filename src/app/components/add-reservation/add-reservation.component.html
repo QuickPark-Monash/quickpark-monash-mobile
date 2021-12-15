@@ -5,12 +5,12 @@
   </div>
   <div class="selections-wrapper">
     <div class="selection-title">Select a location</div>
-    <select placeholder="Choose a mall">
+    <select placeholder="Choose a mall" [(ngModel)]="selectedMallName" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedTime)">
       <option value="">Choose a mall</option>
-      <option *ngFor="let mall of malls">{{mall}}</option>
+      <option *ngFor="let mallData of mallsData">{{mallData.mallName}}</option>
     </select>
     <div style="margin-top: 3vh;" class="selection-title">Pick your time</div>
-    <input class="selector" value={{today}} type="date" [(ngModel)]="selectedDate">
+    <input class="selector" value={{today}} type="date" [(ngModel)]="selectedDate" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedTime)">
     <input class="selector" value={{today}} step="900" type="time" [(ngModel)]="selectedTime">
     <!-- <div style="margin-top: 0.5vh; color:#EE786C; font-weight: 700; font-size: 0.8em;">*Date cannot be before today</div> -->
 
@@ -40,7 +40,7 @@
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
 
       <div style="margin-top: 1vh;" class="title"><i class="fas fa-money-check-alt" style="margin-right: 1vh"></i>Parking Fare</div>
-      <div style="font-size: 2.5vh;">RM 30</div>
+      <div style="font-size: 2.5vh;">{{dynamicPrice}}</div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
   </div>

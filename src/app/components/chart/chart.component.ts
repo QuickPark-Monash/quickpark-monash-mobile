@@ -12,7 +12,7 @@ export class ChartComponent implements OnInit {
   myChart: any;
   allMallData: MallData[] = MOCK_MALL_DATA;
   selectedMall: MallData = MOCK_MALL_DATA[0];
-  mallIds: Array<number> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
+  mallIds: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
   mallNames: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallName));
   weeklyPrices: Array<number> = this.selectedMall.parkingLot.weeklyPrices;
 

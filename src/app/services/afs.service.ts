@@ -15,11 +15,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AfsService {
   allReservationsRef: AngularFirestoreCollection<ReservationItem>;
   allUsersRef: AngularFirestoreCollection<User>;
-  // reservations: Observable<any>; // Observable<Item[]>
-  // allUsers: Observable<any>;
-  // mallsData: Observable<any>;
-  // for one user
-  // currentUserReservation: Observable<any>
+  allMallsDataRef: AngularFirestoreCollection<MallData>;
+  users!: User[];
+  currentLoggedInUser!: User;
   currUser: any;
 
   constructor(private afs: AngularFirestore) {
@@ -27,6 +25,7 @@ export class AfsService {
 
     this.allReservationsRef = afs.collection('reservations');
     this.allUsersRef = afs.collection('users');
+    this.allMallsDataRef = afs.collection('mallsData');
     // this.userReservationHistoryRef = afs.collection('users').doc("reservationHistory");
     console.log("afs generated")
   }
@@ -34,6 +33,10 @@ export class AfsService {
   // GETTER METHODS (FIRESTORE REFERENCES)
   getReservationsRef() {
     return this.allReservationsRef;
+  }
+
+  getAllMallsDataRef(){
+    return this.allMallsDataRef;
   }
 
   // for ADMIN, get all users
@@ -44,6 +47,7 @@ export class AfsService {
   getUserRefByUid(uid: string){
     return this.allUsersRef.doc(uid);
   }
+
 
   // SETTER METHODS (FIRESTORE REFERENCES)
   // set User data, if doesnt exist, create mnew user data

@@ -19,12 +19,12 @@ const routes: Routes = [
   { path: "profile-page", component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: "wallet", component: WalletComponent, canActivate: [AuthGuard]},
   { path: "qr-scanner", component: QrScannerComponent, canActivate: [AuthGuard]},
-  { path: "reserve", component: ReserveComponent, canActivate: [AuthGuard]},
+  { path: "reserve", component: ReserveComponent},
   { path: "data-analytics", component: DataAnalyticsComponent,canActivate: [AuthGuard]},
   { path: "vehicles", component:VehiclesComponent,canActivate: [AuthGuard] },
-  // { path: "testing", component:TestingComponent },
+  { path: "testing", component:TestingComponent, canActivate: [AuthGuard]},
   { path: "signUp", component:SignUpComponent },
-  { path: "addReservation", component:AddReservationComponent, canActivate: [AuthGuard]}
+  { path: "addReservation", component:AddReservationComponent}
 ];
 
 @NgModule({

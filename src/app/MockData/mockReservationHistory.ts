@@ -2,7 +2,7 @@ import { ParkingSpace } from "../Interfaces/ParkingSpace"
 
 export const MOCK_RESERVATION_HISTORY = [
     {
-      reservationId: 10,
+      reservationId: "10",
       locationName: "NU Sentral Brickfields",
       carPlate: "WIN 1980",
       reservedParking: new ParkingSpace("B4-J40",100,10,true,false,),
@@ -13,7 +13,7 @@ export const MOCK_RESERVATION_HISTORY = [
       isActive: false,
     },
     {
-      reservationId: 2,
+      reservationId: "2",
       locationName: "Suria KLCC",
       carPlate: "WIN 1980",
       reservedParking: new ParkingSpace("A4-0",100,10,true,false,),
@@ -25,7 +25,7 @@ export const MOCK_RESERVATION_HISTORY = [
       // parkingId: "A4-0"
     },
     {
-      reservationId: 3,
+      reservationId: "3",
       locationName: "Pavillion Kuala Lumpur",
       carPlate: "WIN 1980",
       reservedParking: new ParkingSpace("ABH19",100,10,true,false,),
@@ -36,7 +36,7 @@ export const MOCK_RESERVATION_HISTORY = [
       isActive: false,
     },
     {
-      reservationId: 4,
+      reservationId: "4",
       locationName: "Genting Highlands",
       carPlate: "WIN 1980",
       reservedParking: new ParkingSpace("KL-182-B",100,10,true,false,),
@@ -48,7 +48,7 @@ export const MOCK_RESERVATION_HISTORY = [
       // parkingId: "KL-182-B"
     },
     {
-      reservationId: 5,
+      reservationId: "5",
       locationName: "KLIA Airport",
       carPlate: "WIN 1980",
       reservedParking: new ParkingSpace("J-10-KL",100,10,true,false,),

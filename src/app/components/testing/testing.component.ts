@@ -1,3 +1,5 @@
+import { MallData } from 'src/app/Interfaces/MallData';
+import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
 import { MOCK_RESERVATION_HISTORY } from './../../MockData/mockReservationHistory';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +17,8 @@ import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 
 export class TestingComponent implements OnInit {
   reservations: ReservationItem[];
+  mallsData!: MallData[];
+  mockMallsData: MallData[] = MOCK_MALL_DATA;
   users: User[];
   currUser!: User;
   currUserRef!: AngularFirestoreDocument<User>;
@@ -39,6 +43,11 @@ export class TestingComponent implements OnInit {
     // set current user id and user object
     this.currUserRef = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
     this.currUserRef.valueChanges().subscribe((user)=> this.currUser = user!)
+
+
+    // ONE TIME USE : add all mall data
+
+    this.addMallData
   }
 
   addReservation(){
@@ -47,5 +56,16 @@ export class TestingComponent implements OnInit {
     const newReservationItem: ReservationItem = mockReservationItem;
     
     this.afsService.addNewReservation(newReservationItem, this.currUser)
+  }
+
+  addMallData(newMallData: MallData): void{
+    // MOCK_MALL_DATA
+    const allMallsDataRef = this.afsService.getAllMallsDataRef();
+    // const allMallsDataRef = this.afsService.getAllMallsDataRef;
+    allMallsDataRef.add(newMallData)
+  }
+
+  addAllMallData(mallsData: MallData[]){
+    mallsData.forEach((mallData) => this.addMallData(mallData))
   }
 }

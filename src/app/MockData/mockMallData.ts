@@ -32,6 +32,7 @@ import { ParkingLot } from './../Interfaces/ParkingLot';
 //     {day: "Sunday", price: 20}
 // ]
 
+// Sunday, Monday, ... Saturday
 const priceArr1: number[] = [10,11,12,13,14,15,16];
 const priceArr2: number[] = [16,15,14,13,12,11,10];
 const priceArr3: number[] = [10,20,30,40,30,20,10];
@@ -61,9 +62,9 @@ const mParkSpaces1 = [
 ]
 
 
-export const MOCK_MALL_DATA: Array<MallData> = [
+export const MOCK_MALL_DATA: MallData[] = [
     {
-        mallId: 0,
+        mallId: "0",
         mallName: "Mid Valley",
         parkingLot: {
             capacity:2,
@@ -73,7 +74,7 @@ export const MOCK_MALL_DATA: Array<MallData> = [
         // weeklyPrices: priceArr1
     },
     {
-        mallId: 1,
+        mallId: "1",
         mallName: "One Utama",
         parkingLot: {
             capacity:2,
@@ -82,7 +83,7 @@ export const MOCK_MALL_DATA: Array<MallData> = [
         }
     },
     {
-        mallId: 2,
+        mallId: "2",
         mallName: "Sunway Velocity",
         parkingLot: {
             capacity:2,

@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservationItem } from 'src/app/Interfaces/reservationItem';
-import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
-
+import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
+
+import { ReservationItem } from 'src/app/Interfaces/reservationItem';
+import { User } from 'src/app/Interfaces/User';
+import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 import { AlertsService } from 'src/app/services/alerts.service';
+import { AfsService } from 'src/app/services/afs.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-reserve',
@@ -12,8 +17,8 @@ import { AlertsService } from 'src/app/services/alerts.service';
   styleUrls: ['./reserve.component.scss']
 })
 export class ReserveComponent implements OnInit {
-
-  userActive!: ReservationItem[]
+  currUser!: User;
+  userActiveReservations!: ReservationItem[]
   userHistory: ReservationItem[] = MOCKPROFILE.reservationHistory!
   selectedItem?: ReservationItem;
 
@@ -23,22 +28,25 @@ export class ReserveComponent implements OnInit {
 
   formattedTime?: string
 
-  constructor(private alertService: AlertsService) { }
+  constructor(private alertService: AlertsService, private afsService: AfsService, private authService :AuthService) { }
 
   ngOnInit(): void {
+    this.userActiveReservations = this.filterForActive()
 
-    this.userActive = this.filterHistory()
-
+    // GETTING DATA FROM FIRESTORE
+    // set current user id and user object
+    const currUserRef: AngularFirestoreDocument<User> = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
+    currUserRef.valueChanges().subscribe((user)=> this.currUser = user!)
   }
 
-  filterHistory(): ReservationItem[]{
+  filterForActive(): ReservationItem[]{
     return this.userHistory.filter((item) => item.isActive)
   }
 
   onSelect(item: ReservationItem){
     this.selectedItem = item
     var duration = item.reservationDuration.valueOf() - item.reservationTime.valueOf()
-    console.log(duration)
+    // console.log(duration)
     this.getDuration(duration)
   }
 
@@ -50,11 +58,7 @@ export class ReserveComponent implements OnInit {
 
     this.formattedTime = this.durationHour.toString().concat(` HR : ${this.durationMinute} MIN : ${this.durationSecond} SEC`)
   }
-
-  addReservation(){
-    this.alertService.notImplementedAlert()
-  }
-
+  
   trimDate(date: Date){
     return moment(date).format("ddd[\n]MMM Do YYYY[\n]h:mm:ss a")
   }

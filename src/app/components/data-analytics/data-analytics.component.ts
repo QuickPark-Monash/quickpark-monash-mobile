@@ -23,7 +23,7 @@ export class DataAnalyticsComponent implements OnInit {
   showFlag: boolean = false;
   allMallData: MallData[] = MOCK_MALL_DATA;
   selectedMall: MallData = MOCK_MALL_DATA[0];
-  mallIds: Array<number> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
+  mallIds: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallId));
   mallNames: Array<string> = MOCK_MALL_DATA.map((v: MallData,i: number,arr: Array<MallData>) => (v.mallName));
   weeklyPrices: Array<number> = this.selectedMall.parkingLot.weeklyPrices;
   days: Array<string> = ['Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -178,7 +178,7 @@ export class DataAnalyticsComponent implements OnInit {
   showChart(canvasId: string){
     const idLength = canvasId.length;
     const chartId: number = parseInt(canvasId.substring(idLength - 1, idLength)) - 1;
-    return chartId === this.selectedMall.mallId;
+    return chartId.toString() === this.selectedMall.mallId;
   }
 
 }
