@@ -10,6 +10,7 @@ import { MallData } from './../../Interfaces/MallData';
 import { User } from 'src/app/Interfaces/User';
 import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 import { ReservationItem } from './../../Interfaces/reservationItem';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -99,15 +100,25 @@ export class AddReservationComponent implements OnInit {
     // const oldHistory = this.currUserData.reservationHistory
     // this.currUserData.reservationHistory?.push()
     // const currUser = this.currUserData;
-    const newReservation = this.generateNewReservation()
-    this.afsService.addNewReservation(newReservation, this.currUserData);
+
+    try{
+      const newReservation = this.generateNewReservation()
+      this.afsService.addNewReservation(newReservation, this.currUserData);
+    }
+    catch(err){
+      Swal.fire({
+        title:"Incomplete forms",
+        icon:"error",
+        text:"Please fill in all the required fields before booking."
+      })
+    }
   }
 
   generateNewReservation(): ReservationItem{
     const user = this.currUserData;
     const selectedDateObj = new Date(this.selectedDate);
     const newReservation: ReservationItem = {
-      reservationId: user.reservationHistory!.length.toString(),  
+      reservationId: user.reservationHistory!.length.toString(),
       locationName: this.selectedMallName,
       carPlate: user.currentVehicle!.vehiclePlate,
       // reservedParking: new ParkingSpace(),
@@ -146,7 +157,7 @@ export class AddReservationComponent implements OnInit {
     console.log(typeof(selectedDateObj))
     const newDynamicPrice = selectedMall.parkingLot.weeklyPrices[selectedDateObj.getDay()]
     this.dynamicPrice = newDynamicPrice
-    console.log(this.dynamicPrice)    
+    console.log(this.dynamicPrice)
 
     // Date and Time
     console.log(this.selectedDate)
@@ -160,7 +171,7 @@ export class AddReservationComponent implements OnInit {
     console.log(typeof(newDate))
 
     // duration of reservation (miliseconds)
-    console.log(this.duration) 
+    console.log(this.duration)
     console.log(this.floorToMinutes(this.duration)) // rounded to nearest minutes, in terms of miliseconds
   }
 
@@ -169,7 +180,7 @@ export class AddReservationComponent implements OnInit {
     const dateObj = new Date(newDateStr);
     return dateObj
   }
-  
+
   // updateSe(desiredMallName: string){
   //   const desiredMall: MallData = this.mallsData.filter((mall) => mall.mallName == desiredMallName)[0];
   //   this.consoleLogSelectedMall(desiredMall)

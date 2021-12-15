@@ -6,20 +6,24 @@
   <div class="activeOrders">
     <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i> Active Bookings</div>
     <div class="footer">Select a reservation to see the details!</div>
-    <div class="reservations" *ngFor="let item of userActiveReservations">
-      <div
-      class="reservation-item"
-      (click)=onSelect(item)
-      [class.selected]="item === selectedItem">
-        <div>{{item.locationName}}</div>
-        <div class="cost">{{item.reservationCost}}</div>
+    <div class="parent-reservation">
+      <div class="reservations" *ngFor="let item of userActiveReservations">
+        <div
+        class="reservation-item"
+        (click)=onSelect(item)
+        [class.selected]="item === selectedItem">
+          <div class="reservation-item-wrap">
+            <div style="margin-right: 1vh;" *ngIf="item === selectedItem"><i class="fas fa-angle-double-right"></i></div>
+            <div>{{item.locationName}}</div>
+          </div>
+        </div>
+        <hr style="background-color: #BABEC6; height: 2px; border: 0; margin-left:0; width: 75vw;">
       </div>
-      <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
     <app-button routerLink="/addReservation" class="reservationBtn" text="Add Reservation"></app-button>
   </div>
   <div class="details">
-    <div *ngIf=!selectedItem style="font-weight: 700; text-align: center;">Please select an active booking above</div>
+    <div *ngIf=!selectedItem style="font-weight: 700; text-align: center;">Please select an active booking above <br>or add a reservation</div>
     <div class="location" *ngIf=selectedItem>
       <div class="title"><i class="fas fa-car" style="margin-right: 1vh"></i>Arrive before</div>
       <div style="

@@ -49,6 +49,7 @@
     flex-direction: column;
     // overflow: scroll;
 
+
     .reservationBtn{
       align-self: center;
       margin-top: 1vh;
@@ -63,23 +64,25 @@
       color: #BABEC6;
     }
 
-    .selected{
-      background-color: #F1F1FB;
-      border-radius: 1vh;
-    }
+    .parent-reservation{
+      position: relative;
+      overflow: scroll;
+      max-height: 20vh;
+      .reservations{
+        margin-top: 2vh;
+        max-height: 100%;
 
-    .reservations{
-      margin-top: 2vh;
+        .reservation-item{
+          display: flex;
+          flex-direction: row;
+          margin-top: 1vh;
+          padding: 1vh 0 0 0;
+          width: 100%;
 
-      .reservation-item{
-        display: flex;
-        flex-direction: row;
-        margin-top: 1vh;
-        padding: 1vh 1vh 1vh 1vh;
-        width: 100%;
-
-        .cost{
-          margin-left: auto
+          .reservation-item-wrap{
+            display: flex;
+            align-items: center;
+          }
         }
       }
     }
