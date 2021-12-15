@@ -6,6 +6,7 @@
   align-items: center;
   background-color: white;
 
+
   .navigation{
     margin-top: auto;
     width: 100%;
@@ -46,6 +47,7 @@
     border-radius: 2vh;
     display: flex;
     flex-direction: column;
+    // overflow: scroll;
 
     .reservationBtn{
       align-self: center;

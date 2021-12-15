@@ -53,7 +53,25 @@ export class AfsService {
 
   // adds a new reservation to reservationHistory
   addNewReservation(newReservation: ReservationItem, user: User): void {
-    const newReservationHistory = user.reservationHistory!.push(newReservation)
-    this.afs.collection("users").doc(user.UID).update({reservationHistory: newReservationHistory}).then(() => console.log("sucessfully added a new reservation"))
+    // convert to pure javascript objects 
+    // https://stackoverflow.com/questions/48156234/function-documentreference-set-called-with-invalid-data-unsupported-field-val
+    const newReservationJsObj = { ...newReservation, 
+      reservedParking: Object.assign({}, newReservation.reservedParking),
+      reservationTime: Object.assign({}, newReservation.reservationTime),
+      reservationDuration: Object.assign({}, newReservation.reservationDuration)
+    }
+    
+    console.log("before push")
+    console.log(user.reservationHistory)
+    console.log(user)
+    // const newReservationHistory = user.reservationHistory!.push(newReservation)
+    user.reservationHistory!.push(newReservationJsObj)
+    console.log("after push")
+    console.log(user.reservationHistory)
+    
+    // const userReservationHistory = user.reservationHistory!.map((obj)=> {return Object.assign({}, obj)});
+    
+    // this.afs.collection("users").doc(user.UID).set(Object.assign({}, user)).then(() => console.log("sucessfully set a new user object"))
+    this.afs.collection("users").doc(user.UID).update({"reservationHistory": user.reservationHistory}).then(() => console.log("sucessfully added a new reservation"))
   }
 }

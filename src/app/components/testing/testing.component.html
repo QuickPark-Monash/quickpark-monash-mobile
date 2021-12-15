@@ -11,18 +11,15 @@
     <h1>All Users</h1>
     <ul *ngFor="let user of users" class="collection" >
         <li class="collection-item">{{user.UID}} {{user.displayName}}</li>
+        <ul *ngFor="let reserveItem of user.reservationHistory" class="collection" >    </ul>
+
     </ul>
     <!-- <li class="text" *ngFor="let item of items">
         {{item.title}}
     </li> -->
 </div>
 
-<!-- <h1>User with Uid 2</h1>
-<ul *ngFor="let user of users" class="collection" >
-    <li class="collection-item">{{user.uid}} {{user.displayName}}</li>
-</ul> -->
-
-
+<app-button color="#EE786C"text="add reservation" (click)=addReservation()></app-button>
 
 <ng-template #noItems>
     <hr>

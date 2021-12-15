@@ -1,7 +1,11 @@
+import { MOCK_RESERVATION_HISTORY } from './../../MockData/mockReservationHistory';
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ReservationItem } from 'src/app/Interfaces/reservationItem';
 import { User } from 'src/app/Interfaces/User';
 import { AfsService } from '../../services/afs.service';
+import { AngularFirestoreDocument } from '@angular/fire/firestore';
+import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 
 @Component({
   selector: 'app-testing',
@@ -12,9 +16,11 @@ import { AfsService } from '../../services/afs.service';
 export class TestingComponent implements OnInit {
   reservations: ReservationItem[];
   users: User[];
+  currUser!: User;
+  currUserRef!: AngularFirestoreDocument<User>;
   modelUserId:number;
 
-  constructor(private afsService: AfsService) { 
+  constructor(private authService: AuthService,private afsService: AfsService) { 
     this.reservations = [];
     this.users = [];
     this.modelUserId = 0;
@@ -29,8 +35,17 @@ export class TestingComponent implements OnInit {
     this.afsService.getAllUsersRef().valueChanges().subscribe((users: User[]) => {
       this.users = users;
     })
-    this.afsService.getAllUsersRef().valueChanges().subscribe((users: User[]) => {
-      this.users = users;
-    })
+
+    // set current user id and user object
+    this.currUserRef = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
+    this.currUserRef.valueChanges().subscribe((user)=> this.currUser = user!)
+  }
+
+  addReservation(){
+    var mockReservationItem: ReservationItem = MOCK_RESERVATION_HISTORY[0]
+    mockReservationItem.carPlate = this.currUser.currentVehicle!.vehiclePlate;
+    const newReservationItem: ReservationItem = mockReservationItem;
+    
+    this.afsService.addNewReservation(newReservationItem, this.currUser)
   }
 }

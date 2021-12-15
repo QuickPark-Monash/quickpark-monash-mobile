@@ -32,7 +32,7 @@ export class AuthService {
       (value) => {
         this.flipLogin()
         this.flipLoggingIn()
-        this.setCurrentUser(value.user?.uid)
+        this.setCurrentUserId(value.user?.uid)
         this.router.navigate(["profile-page"])
       }
     ).catch(()=>{
@@ -49,7 +49,7 @@ export class AuthService {
   
   signUp(signUpEmail: string, signUpPassword:string, newUser: User): void{
     this.auth.createUserWithEmailAndPassword(signUpEmail,signUpPassword).then((value)=>{
-      this.setCurrentUser(value.user?.uid)
+      this.setCurrentUserId(value.user?.uid)
       console.log(newUser);   // there is uid
       console.log(this.currentUserUID);   // there is uid
       console.log("pointsbalance new user:" + newUser.pointsBalance);   // there is uid
@@ -83,7 +83,7 @@ export class AuthService {
     this.isLoggingIn = false
   }
 
-  setCurrentUser(UID?: string):void{
+  setCurrentUserId(UID?: string):void{
     this.currentUserUID = UID
   }
 }

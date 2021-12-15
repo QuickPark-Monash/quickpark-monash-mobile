@@ -20,7 +20,7 @@ export class ProfilePageComponent implements OnInit {
   allUsers!: User[];
   user!: User;
   userRef!: AngularFirestoreDocument<User>
-  uid!: string;
+  // uid!: string;
   currUserVehicle!: Vehicle;
   isLoading = false;
 
@@ -34,8 +34,8 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show()
-    this.uid = this.authService.currentUserUID!;
-    this.userRef = this.afsService.getUserRefByUid(this.uid);
+    // this.uid = this.authService.currentUserUID!;
+    this.userRef = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
     const userObservable: Observable<any> = this.userRef.valueChanges()
     userObservable.subscribe((user: User) => {
       this.setUser(user)
