@@ -5,8 +5,8 @@
   </div>
   <div class="selections-wrapper">
     <div class="selection-title">Select a location</div>
-    <select placeholder="Choose a mall" [(ngModel)]="selectedMallName" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)">
-      <option value="">Choose a mall</option>
+    <select placeholder="Tap to choose a mall" [(ngModel)]="selectedMallName" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)">
+      <option value="">Tap to choose a mall</option>
       <option *ngFor="let mallData of mallsData">{{mallData.mallName}}</option>
     </select>
     <div style="margin-top: 3vh;" class="selection-title">Pick your time</div>
@@ -32,22 +32,22 @@
   <div class="details">
     <div class="location" >
       <div class="title"><i class="far fa-clock" style="margin-right: 1vh"></i>Travel Time</div>
-      <div style="font-size: 2.5vh;">{{formattedTime}}</div>
+      <div style="font-size: 2.5vh;">{{selectedMallName ? '45 minutes' : '0 minutes'}}</div>
 
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
 
       <div style="margin-top: 1vh;" class="title"><i class="fas fa-money-check-alt" style="margin-right: 1vh"></i>Recommended Departure</div>
-      <div style="font-size: 2.5vh;">Some time</div>
+      <div style="font-size: 2.5vh;">{{selectedStartTime ? '20 minutes before' : '0 minutes before'}}</div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
 
       <div style="margin-top: 1vh;" class="title"><i class="fas fa-money-check-alt" style="margin-right: 1vh"></i>Parking Fare</div>
-      <div style="font-size: 2.5vh;">{{dynamicPrice}}</div>
+      <div style="font-size: 2.5vh;">RM {{dynamicPrice ? dynamicPrice : 0}}</div>
       <hr style="background-color: #BABEC6; height: 2px; border: 0;">
     </div>
   </div>
   <div class="submits">
     <a class="button-1 button" (click)="addReservation()">Book your space</a>
-    <a class="button-2 button" routerLink="/qr-scanner">Cancel</a>
+    <a class="button-2 button" routerLink="/reserve">Cancel</a>
   </div>
 </div>
 

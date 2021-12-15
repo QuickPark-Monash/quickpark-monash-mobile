@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import Timestamp = firebase.firestore.Timestamp;
+import Swal from 'sweetalert2';
 
 import { ReservationItem } from '../Interfaces/reservationItem';
 import { MallData } from '../Interfaces/MallData';
@@ -70,22 +71,38 @@ export class AfsService {
 
   // adds a new reservation to reservationHistory
   addNewReservation(newReservation: ReservationItem, user: User): void {
-    // convert to pure javascript objects 
+    // convert to pure javascript objects
     // https://stackoverflow.com/questions/48156234/function-documentreference-set-called-with-invalid-data-unsupported-field-val
-    const newReservationJsObj = { ...newReservation, 
+    const newReservationJsObj = { ...newReservation,
       // reservationStartTime: Object.assign({}, newReservation.reservationStartTime)
     }
-    console.log("before push")
-    console.log(user.reservationHistory)
-    console.log(user)
+    // console.log("before push")
+    // console.log(user.reservationHistory)
+    // console.log(user)
 
     user.reservationHistory!.push(newReservation)
 
-    console.log("after push")
-    console.log(user.reservationHistory)
-        
+    // console.log("after push")
+    // console.log(user.reservationHistory)
+
     // this.afs.collection("users").doc(user.UID).set(Object.assign({}, user)).then(() => console.log("sucessfully set a new user object"))
-    this.afs.collection("users").doc(user.UID).update({"reservationHistory": user.reservationHistory}).then(() => console.log("sucessfully added a new reservation"))
+    this.afs.collection("users").doc(user.UID).update({"reservationHistory": user.reservationHistory}).then(
+      () => Swal.fire({
+        title:"Reservation Added Successfully",
+        icon:"success",
+        text:"Check your Active Bookings to see the reservation!"
+      }).then(()=>{
+        window.history.go(-1)
+      })).catch(() => {
+      Swal.fire({
+        title:"An error has occured",
+        icon:"error",
+        text:"Please try and log in again.",
+        footer:"If the problem persists, please email quickpark.hackathon@gmail.com"
+      }).then(() => {
+        window.location.reload()
+      })
+    })
   }
 
 
