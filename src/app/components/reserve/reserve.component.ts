@@ -9,6 +9,8 @@ import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { AfsService } from 'src/app/services/afs.service';
 import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 
 @Component({
@@ -17,9 +19,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./reserve.component.scss']
 })
 export class ReserveComponent implements OnInit {
-  currUser!: User;
+  // objects with ANY type implicitly means data retrieved from firestore
+  currUser!: any;
   userActiveReservations!: ReservationItem[]
-  userHistory: ReservationItem[] = MOCKPROFILE.reservationHistory!
+  userHistory: ReservationItem[] = []
   selectedItem?: ReservationItem;
 
   durationHour?: number
@@ -31,27 +34,33 @@ export class ReserveComponent implements OnInit {
   constructor(private alertService: AlertsService, private afsService: AfsService, private authService :AuthService) { }
 
   ngOnInit(): void {
-    this.userActiveReservations = this.filterForActive()
-
     // GETTING DATA FROM FIRESTORE
-    // set current user id and user object
+    // sets: uid, user, activeReservations 
     const currUserRef: AngularFirestoreDocument<User> = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
-    currUserRef.valueChanges().subscribe((user)=> this.currUser = user!)
+    currUserRef.valueChanges().subscribe((user)=> {
+      this.currUser = user!
+      this.userHistory = this.currUser.reservationHistory.map((reserveItem: any) => {
+        const timeStampObj: Timestamp = reserveItem.reservationStartTime
+        return { ...reserveItem,
+          reservationStartTime: timeStampObj.toDate()
+        }
+      });
+      // this.userHistory = this.currUser.reservationHistory!;
+      this.userActiveReservations = this.getActiveReservations(this.userHistory);
+    });
   }
 
-  filterForActive(): ReservationItem[]{
-    return this.userHistory.filter((item) => item.isActive)
+  getActiveReservations(reserveHistory: ReservationItem[]): ReservationItem[]{
+    return reserveHistory.filter((item) => item.isActive);
   }
 
   onSelect(item: ReservationItem){
     this.selectedItem = item
-    var duration = item.reservationDuration.valueOf() - item.reservationTime.valueOf()
     // console.log(duration)
-    this.getDuration(duration)
+    this.formatDuration(item.reservationDuration)
   }
 
-  getDuration(duration: number){
-
+  formatDuration(duration: number){
     this.durationSecond = Math.floor((duration / 1000) % 60)
     this.durationMinute = Math.floor((duration / (1000 * 60)) % 60)
     this.durationHour = Math.floor((duration / (1000 * 60 * 60)) % 24);
@@ -70,4 +79,6 @@ export class ReserveComponent implements OnInit {
   checkIn(){
     this.alertService.notImplementedAlert()
   }
+
+  
 }

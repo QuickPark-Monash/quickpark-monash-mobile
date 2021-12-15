@@ -6,9 +6,9 @@ export interface ReservationItem {
   // reservedBy: User;
   locationName: string;
   carPlate: string;
-  reservedParking: ParkingSpace;
-  reservationTime: Date;
-  reservationDuration: Date;
+  // reservedParking: ParkingSpace;
+  reservationStartTime: Date;
+  reservationDuration: number;
   reservationCost?: number;
   pointsEarned?: number;
   isActive: boolean;

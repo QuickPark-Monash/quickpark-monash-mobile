@@ -1,13 +1,18 @@
+import { ReservationItem } from './../../Interfaces/reservationItem';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Interfaces/User';
 import { map } from 'rxjs/operators'
-import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 import { AuthService } from 'src/app/services/auth.service';
 import { AfsService } from 'src/app/services/afs.service';
-import { Vehicle } from 'src/app/Interfaces/Vehicle';
 import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
+
+// interfaces and mockdata
+import { User } from 'src/app/Interfaces/User';
+import { Vehicle } from 'src/app/Interfaces/Vehicle';
+import { MOCKPROFILE } from 'src/app/MockData/mockprofiles';
 
 @Component({
   selector: 'app-profile-page',
@@ -18,8 +23,8 @@ export class ProfilePageComponent implements OnInit {
   // DEFAULT MOCKUP STUFF
 
   allUsers!: User[];
-  user!: User;
-  userRef!: AngularFirestoreDocument<User>
+  user!: any;    // because the structure in firestore is different
+  userRef!: AngularFirestoreDocument<any>
   // uid!: string;
   currUserVehicle!: Vehicle;
   isLoading = false;
@@ -37,8 +42,19 @@ export class ProfilePageComponent implements OnInit {
     // this.uid = this.authService.currentUserUID!;
     this.userRef = this.afsService.getUserRefByUid(this.authService.currentUserUID!);
     const userObservable: Observable<any> = this.userRef.valueChanges()
-    userObservable.subscribe((user: User) => {
+    userObservable.subscribe((user: any) => {
       this.setUser(user)
+      console.log("in profile page: console logging all timestamp objects converted to date")
+      const history = this.user.reservationHistory!
+
+      history.forEach((reserveItem: any) => {
+        const timeStampObj: Timestamp = reserveItem.reservationStartTime
+        const dateObj: Date = reserveItem.reservationStartTime.toDate()
+        console.log(timeStampObj)
+        console.log(typeof(timeStampObj))
+        console.log(dateObj)        
+        console.log(typeof(dateObj))
+      });
     });
   }
 

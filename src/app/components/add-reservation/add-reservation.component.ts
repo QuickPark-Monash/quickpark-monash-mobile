@@ -1,12 +1,16 @@
-import { MallData } from './../../Interfaces/MallData';
-import { ReservationItem } from './../../Interfaces/reservationItem';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import * as moment from 'moment';
-import { User } from 'src/app/Interfaces/User';
-import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
 import { AfsService } from 'src/app/services/afs.service';
 import { AuthService } from 'src/app/services/auth.service';
+
+// interfaces and mock data
+import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
+import { MallData } from './../../Interfaces/MallData';
+import { User } from 'src/app/Interfaces/User';
+import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
+import { ReservationItem } from './../../Interfaces/reservationItem';
+
 
 @Component({
   selector: 'app-add-reservation',
@@ -15,12 +19,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AddReservationComponent implements OnInit {
   currUserData!: User;
-  mallsData:MallData[] = []
+  currUserReservations: ReservationItem[] = [];
+  mallsData:MallData[] = [];
   // mallName!: string;
 
   selectedMallName!: string;
   selectedDate!: Date;
-  selectedTime!: Date;
+  selectedStartTime!: Date;
   today = moment().toDate();
 
   duration: number = 0;
@@ -51,26 +56,14 @@ export class AddReservationComponent implements OnInit {
     this.formattedTime = this.durationHour.toString().concat(` HR : ${this.durationMinute} MIN`)
   }
 
-  // from mallsData.weeklyPrices 
-  // dayNumber: Monday=0, Tuesday=1 ... Sunday=6
-  getDailyFare(mallData: MallData, dayNumber: number){
-    return mallData.parkingLot.weeklyPrices[dayNumber]
-  }
-  
-  consoleLogDate(mDate: Date){
-    console.log(typeof(mDate));
-    const mDateObj: Date = new Date(mDate);
-    console.log("selected date is: " + mDateObj.toString())
-    console.log(mDateObj.getDay())
-    console.log("day num: " + mDateObj.getDay())
-    console.log("the selected day is: " + this.convDayStr(mDateObj.getDay()))
-  }
-
-  // consoleLogSelectedMallName(mall: string){
-  //   console.log(typeof(mall));
-  //   console.log(mall);
+  // consoleLogDate(mDate: Date){
+  //   console.log(typeof(mDate));
+  //   const mDateObj: Date = new Date(mDate);
+  //   console.log("selected date is: " + mDateObj.toString())
+  //   console.log(mDateObj.getDay())
+  //   console.log("day num: " + mDateObj.getDay())
+  //   console.log("the selected day is: " + this.convDayStr(mDateObj.getDay()))
   // }
-
 
   convDayStr(dayNum: number): string{
     var dayStr: string;
@@ -102,10 +95,29 @@ export class AddReservationComponent implements OnInit {
     return dayStr
   }
 
-  addReservation(newReservation: ReservationItem, currUser: User){
+  addReservation(){
     // const oldHistory = this.currUserData.reservationHistory
     // this.currUserData.reservationHistory?.push()
-    this.afsService.addNewReservation(newReservation, currUser)
+    // const currUser = this.currUserData;
+    const newReservation = this.generateNewReservation()
+    this.afsService.addNewReservation(newReservation, this.currUserData);
+  }
+
+  generateNewReservation(): ReservationItem{
+    const user = this.currUserData;
+    const selectedDateObj = new Date(this.selectedDate);
+    const newReservation: ReservationItem = {
+      reservationId: user.reservationHistory!.length.toString(),  
+      locationName: this.selectedMallName,
+      carPlate: user.currentVehicle!.vehiclePlate,
+      // reservedParking: new ParkingSpace(),
+      reservationStartTime: this.dateTimeToDateObj(this.selectedDate, this.selectedStartTime),
+      reservationDuration: this.floorToMinutes(this.duration),
+      reservationCost: this.dynamicPrice,
+      pointsEarned: 0,
+      isActive: true
+    };
+    return newReservation;
   }
 
   getMallByName(desiredMallName: string){
@@ -122,17 +134,42 @@ export class AddReservationComponent implements OnInit {
   //   // getMallByName(selectedMallName).parkingLot.weeklyPrices[selectedDate.getDay()]
   // }
 
+  // floors duration in miliseconds to nearest minute
+  floorToMinutes(duration: number): number{
+    const totalMinutes = Math.floor((duration / (1000 * 60)));
+    return totalMinutes * 1000 * 60
+  }
+
   updateDailyPrice(selectedMallName: string, selectedDate: Date, selectedTime: Date){
     const selectedDateObj = new Date(selectedDate);
     const selectedMall = this.getMallByName(selectedMallName)
     console.log(typeof(selectedDateObj))
     const newDynamicPrice = selectedMall.parkingLot.weeklyPrices[selectedDateObj.getDay()]
-    console.log(newDynamicPrice)
     this.dynamicPrice = newDynamicPrice
+    console.log(this.dynamicPrice)    
+
+    // Date and Time
+    console.log(this.selectedDate)
+    console.log(typeof(this.selectedDate))
+
+    console.log(this.selectedStartTime)
+    console.log(typeof(this.selectedStartTime))
+
+    const newDate = this.dateTimeToDateObj(this.selectedDate, this.selectedStartTime);
+    console.log(newDate)
+    console.log(typeof(newDate))
+
+    // duration of reservation (miliseconds)
+    console.log(this.duration) 
+    console.log(this.floorToMinutes(this.duration)) // rounded to nearest minutes, in terms of miliseconds
   }
 
-
-
+  dateTimeToDateObj(dateStr: Date, timeStr: Date): Date{
+    const newDateStr = dateStr.toString() + "T" + timeStr.toString();
+    const dateObj = new Date(newDateStr);
+    return dateObj
+  }
+  
   // updateSe(desiredMallName: string){
   //   const desiredMall: MallData = this.mallsData.filter((mall) => mall.mallName == desiredMallName)[0];
   //   this.consoleLogSelectedMall(desiredMall)
