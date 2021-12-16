@@ -3,6 +3,7 @@ import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 import { User } from 'src/app/Interfaces/User';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { textChangeRangeIsUnchanged } from 'typescript';
+import { BarcodeFormat } from '@zxing/library';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -10,6 +11,7 @@ import { textChangeRangeIsUnchanged } from 'typescript';
   styleUrls: ['./qr-scanner.component.scss']
 })
 export class QrScannerComponent implements OnInit {
+  allowedFormats = [ BarcodeFormat.QR_CODE];
   scanResult: any = '';
   title: string ="QR Code Scanner";
   scanned?: boolean;
