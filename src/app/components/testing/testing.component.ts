@@ -24,7 +24,7 @@ export class TestingComponent implements OnInit {
   currUserRef!: AngularFirestoreDocument<User>;
   modelUserId:number;
 
-  constructor(private authService: AuthService,private afsService: AfsService) { 
+  constructor(private authService: AuthService,private afsService: AfsService) {
     this.reservations = [];
     this.users = [];
     this.modelUserId = 0;
@@ -54,7 +54,7 @@ export class TestingComponent implements OnInit {
     var mockReservationItem: ReservationItem = MOCK_RESERVATION_HISTORY[0]
     mockReservationItem.carPlate = this.currUser.currentVehicle!.vehiclePlate;
     const newReservationItem: ReservationItem = mockReservationItem;
-    
+
     this.afsService.addNewReservation(newReservationItem, this.currUser)
   }
 

@@ -1,3 +1,11 @@
+<ngx-spinner
+bdColor = "rgb(241,241,251, 1)"
+size = "medium"
+color = "#3f3d56"
+type = "timer"
+[fullScreen] = "true"
+><p style="color: #3f3d56" > Fetching profile </p>
+</ngx-spinner>
 <div class="reserve-wrapper">
   <div class="reserve-header">
     <div class="reserve-title">Add <span>Reservation</span></div>
@@ -5,13 +13,13 @@
   </div>
   <div class="selections-wrapper">
     <div class="selection-title">Select a location</div>
-    <select placeholder="Tap to choose a mall" [(ngModel)]="selectedMallName" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)">
+    <select placeholder="Tap to choose a mall" [(ngModel)]="selectedMallName" (change)="updateDailyPrice(selectedMallName)">
       <option value="">Tap to choose a mall</option>
       <option *ngFor="let mallData of mallsData">{{mallData.mallName}}</option>
     </select>
     <div style="margin-top: 3vh;" class="selection-title">Pick your time</div>
-    <input class="selector" value={{today}} type="date" [(ngModel)]="selectedDate" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)">
-    <input class="selector" value={{today}} step="900" type="time" [(ngModel)]="selectedStartTime" (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)">
+    <input class="selector" value={{today}} type="date" [(ngModel)]="selectedDate" (change)="updateDailyPrice(selectedMallName)(selectedDate)">
+    <input class="selector" value={{today}} step="900" type="time" [(ngModel)]="selectedStartTime">
     <!-- <div style="margin-top: 0.5vh; color:#EE786C; font-weight: 700; font-size: 0.8em;">*Date cannot be before today</div> -->
 
     <div style="margin-top: 3vh;" class="selection-title timer">
@@ -21,13 +29,12 @@
     <input
     [(ngModel)]="duration"
     (input)="valueChanged($event)"
-    (change)="updateDailyPrice(selectedMallName, selectedDate, selectedStartTime)"
     type="range"
     min="0"
     max="28800000"
     value="50"
     class="slider"
-    id="myRange">
+    >
   </div>
   <div class="details">
     <div class="location" >
