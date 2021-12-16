@@ -59,6 +59,11 @@
       flex-direction: column;
       gap: 1vh;
 
+      .input-field{
+        background-color: white;
+        border-radius: 2vh;
+      }
+
       .info-title{
         font-size: 1em;
         font-weight: 700;
@@ -66,9 +71,13 @@
       }
     }
 
+    #displayName, #emailAddress{
+      padding: 1vh 20px 1vh 20px;
+    }
+
     input{
       width: inherit;
-      padding: 1vh 20px 1vh 20px;
+      padding: 0 20px 0 20px;
       flex: 1;
       border-radius: 0.8em;
       // background-image: url('../../../assets/Images/user-solid.svg');

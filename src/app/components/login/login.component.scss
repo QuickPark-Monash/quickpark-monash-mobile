@@ -70,11 +70,19 @@
       flex-direction: column;
       gap: 1vh;
       justify-content: center;
-      margin: 1vh 50px 1vh 50px;
+      margin: 2vh 50px 1vh 50px;
+
+      .input-field{
+        background-color: white;
+        display: flex;
+        align-items: center;
+        border-radius: 1vh;
+      }
+
 
       input{
         width: inherit;
-        padding: 1vh 20px 1vh 20px;
+        padding: 0 20px 0 20px;
         flex: 1;
         border-radius: 0.8em;
         // background-image: url('../../../assets/Images/user-solid.svg');

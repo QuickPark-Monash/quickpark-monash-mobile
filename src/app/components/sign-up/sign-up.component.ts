@@ -28,6 +28,9 @@ export class SignUpComponent implements OnInit {
   signUpPassword!: string;
   confirmPass!: string;
 
+  //Password visibility
+  showPassword:boolean = false;
+
   constructor(private afsService: AfsService, private authService: AuthService) {
     // console.log(this.authService.currentUserUID)
   }
@@ -41,6 +44,10 @@ export class SignUpComponent implements OnInit {
 
   confirmCheck(){
     return this.signUpPassword !== null && this.signUpPassword === this.confirmPass
+  }
+
+  toggleShowPassword(){
+    this.showPassword = !this.showPassword
   }
 
   signUp(){
@@ -63,7 +70,7 @@ export class SignUpComponent implements OnInit {
       }
 
       this.authService.signUp(this.emailAddress, this.signUpPassword, newUser);
-      // add the user data: displayName and carplate number 
+      // add the user data: displayName and carplate number
       // var currentUserUid = this.authService.getUID()
       // console.log(this.authService.getUID())
       // console.log(currentUserUid);

@@ -8,11 +8,14 @@
     <div class="personal-inf">
       <div
       class="info-title">Personal Information</div>
-      <input
+        <input
+        id="displayName"
       [(ngModel)] = "displayName"
       name="displayName"
       class="input-field" type="text" placeholder="Display Name">
+
       <input
+      id="emailAddress"
       [(ngModel)] = "emailAddress"
       name="emailAddress"
       name="loginPassword"
@@ -20,19 +23,28 @@
     </div>
     <div class="user-inf">
       <div class="info-title">Account Details</div>
-      <input
+      <div class="input-field">
+        <input
       [(ngModel)] = "carPlateNo"
       name="carPlateNo"
       class="input-field" type="text" placeholder="Car Plate Number">
-      <input
-      [(ngModel)] = "signUpPassword"
-      name="signUpPassword"
-      class="input-field" type="password" placeholder="Password">
-      <input
+      </div>
+      <div class="input-field">
+        <input
+        [(ngModel)] = "signUpPassword"
+        name="signUpPassword"
+        class="input-field" type='{{showPassword ? "text" : "password"}}' placeholder="Password">
+        <i
+        (click)="toggleShowPassword()"
+        style="color:grey; margin-right: 2vh; width: 20px;"
+        class='{{showPassword ? "fas fa-eye" : "fas fa-eye-slash"}}'></i>
+      </div>
+      <div class="input-field">
+        <input
       [(ngModel)] = "confirmPass"
       name="confirmPass"
-      class="input-field" type="password" placeholder="Confirm Password">
-      <!-- <div *ngIf=confirmCheck() style="font-weight: 700; font-size: 0.8em; color:red">Password Not Same</div> -->
+      class="input-field" type='{{showPassword ? "text" : "password"}}' placeholder="Confirm Password">
+      </div>
     </div>
   </form>
   <div

@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   signUpEmail!: string;
   signUpPassword!: string;
 
+  showPassword: boolean = false;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,10 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     this.authService.login(this.loginEmail, this.loginPassword);
+  }
+
+  toggleShowPassword(){
+    this.showPassword = !this.showPassword
   }
 
   // signUp(): void{
