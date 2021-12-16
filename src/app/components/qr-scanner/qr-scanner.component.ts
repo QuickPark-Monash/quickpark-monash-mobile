@@ -46,21 +46,28 @@ export class QrScannerComponent implements OnInit {
     //   footer:"Time is starting to tick"
     // }).then(() => window.history.go(-1));
 
-    if (this.isValidScan(result)){
-      Swal.fire({
-        icon: "success",
-        title: "Check in successful!",
-        text: "Enjoy your visit :)",
-        footer:"Time is starting to tick"
-      }).then(() => window.history.go(-1))
-    }
-    else{
-      Swal.fire({
-        icon: "error",
-        title: "Check in failure",
-        text: "Invalid check in :("
-      }).then(() => window.history.go(-1))
-    }
+    // if (this.isValidScan(result)){
+    //   Swal.fire({
+    //     icon: "success",
+    //     title: "Check in successful!",
+    //     text: "Enjoy your visit :)",
+    //     footer:"Time is starting to tick"
+    //   }).then(() => window.history.go(-1))
+    // }
+    // else{
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Check in failure",
+    //     text: "Invalid check in :("
+    //   }).then(() => window.history.go(-1))
+    // }
+    Swal.fire({
+      icon: "success",
+      title: "Check in successful!",
+      text: "Enjoy your visit :)",
+      footer:"Time is starting to tick"
+    }).then(() => window.history.go(-1))
+
     this.scanResult = result
   }
 
