@@ -44,21 +44,11 @@ export class ProfilePageComponent implements OnInit {
     const userObservable: Observable<any> = this.userRef.valueChanges()
     userObservable.subscribe((user: any) => {
       this.setUser(user)
-      // console.log("in profile page: console logging all timestamp objects converted to date")
-      const history = this.user.reservationHistory!
-
-      history.forEach((reserveItem: any) => {
-        const timeStampObj: Timestamp = reserveItem.reservationStartTime
-        const dateObj: Date = reserveItem.reservationStartTime.toDate()
-        // console.log(timeStampObj)
-        // console.log(typeof(timeStampObj))
-        // console.log(dateObj)        
-        // console.log(typeof(dateObj))
-      });
     });
   }
 
   setUser(user: User){
     this.user = user
+    this.spinner.hide()
   }
 }

@@ -11,6 +11,7 @@ import { User } from 'src/app/Interfaces/User';
 import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 import { ReservationItem } from './../../Interfaces/reservationItem';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -37,7 +38,10 @@ export class AddReservationComponent implements OnInit {
 
   dynamicPrice: number = 0
 
-  constructor(private afsService: AfsService, private authService: AuthService) { }
+  constructor(
+    private afsService: AfsService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     // Loading data from firestore
@@ -100,7 +104,6 @@ export class AddReservationComponent implements OnInit {
     // const oldHistory = this.currUserData.reservationHistory
     // this.currUserData.reservationHistory?.push()
     // const currUser = this.currUserData;
-
     try{
       const newReservation = this.generateNewReservation()
       this.afsService.addNewReservation(newReservation, this.currUserData);
@@ -109,7 +112,7 @@ export class AddReservationComponent implements OnInit {
       Swal.fire({
         title:"Incomplete forms",
         icon:"error",
-        text:"Please fill in all the required fields before booking."
+        text:"Please fill in all the required fields before booking.",
       })
     }
   }
@@ -151,28 +154,15 @@ export class AddReservationComponent implements OnInit {
     return totalMinutes * 1000 * 60
   }
 
-  updateDailyPrice(selectedMallName: string, selectedDate: Date, selectedTime: Date){
-    const selectedDateObj = new Date(selectedDate);
-    const selectedMall = this.getMallByName(selectedMallName)
-    // console.log(typeof(selectedDateObj))
-    const newDynamicPrice = selectedMall.parkingLot.weeklyPrices[selectedDateObj.getDay()]
-    this.dynamicPrice = newDynamicPrice
-    // console.log(this.dynamicPrice)
+  //Supposed to be by every 15 minutes, this is a half-attempt at fixing the selection issue, but the idea is basically return a partial function based on which input is given in.
+  updateDailyPrice(selectedMallName: string){
 
-    // Date and Time
-    // console.log(this.selectedDate)
-    // console.log(typeof(this.selectedDate))
-
-    // console.log(this.selectedStartTime)
-    // console.log(typeof(this.selectedStartTime))
-
-    const newDate = this.dateTimeToDateObj(this.selectedDate, this.selectedStartTime);
-    // console.log(newDate)
-    // console.log(typeof(newDate))
-
-    // duration of reservation (miliseconds)
-    // console.log(this.duration)
-    // console.log(this.floorToMinutes(this.duration)) // rounded to nearest minutes, in terms of miliseconds
+    return (selectedDate: Date) => {
+      const selectedDateObj = new Date(selectedDate);
+      const selectedMall = this.getMallByName(selectedMallName)
+      const newDynamicPrice = selectedMall.parkingLot.weeklyPrices[selectedDateObj.getDay()]
+      this.dynamicPrice = newDynamicPrice
+    }
   }
 
   dateTimeToDateObj(dateStr: Date, timeStr: Date): Date{
