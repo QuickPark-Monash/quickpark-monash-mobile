@@ -40,8 +40,8 @@ export class AddReservationComponent implements OnInit {
 
   constructor(
     private afsService: AfsService,
-    private authService: AuthService,
-    private spinner: NgxSpinnerService) { }
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     // Loading data from firestore
@@ -118,7 +118,6 @@ export class AddReservationComponent implements OnInit {
   }
 
   generateNewReservation(): ReservationItem{
-    console.log(this.spinner.show())
     const user = this.currUserData;
     const selectedDateObj = new Date(this.selectedDate);
     const newReservation: ReservationItem = {
