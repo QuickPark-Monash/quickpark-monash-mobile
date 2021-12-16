@@ -28,7 +28,6 @@ import { ReservationItemComponent } from './components/reservation-item/reservat
 import { TestingComponent } from './components/testing/testing.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
-
 // import vegaEmbedModule from 'vega-embed';
 
 @NgModule({
