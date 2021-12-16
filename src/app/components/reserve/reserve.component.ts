@@ -21,7 +21,7 @@ import Timestamp = firebase.firestore.Timestamp;
 export class ReserveComponent implements OnInit {
   // objects with ANY type implicitly means data retrieved from firestore
   currUser!: any;
-  userActiveReservations!: ReservationItem[]
+  userActiveReservations: ReservationItem[] = []
   userHistory: ReservationItem[] = []
   selectedItem?: ReservationItem;
 

@@ -1,16 +1,17 @@
-// import { ReservationItem } from 'src/app/Interfaces/reservationItem';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { ReservationItem } from '../Interfaces/reservationItem';
-import { MallData } from '../Interfaces/MallData';
-import { User } from '../Interfaces/User';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './auth.service';
 
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import Timestamp = firebase.firestore.Timestamp;
 import Swal from 'sweetalert2';
+
+import { ReservationItem } from '../Interfaces/reservationItem';
+import { MallData } from '../Interfaces/MallData';
+import { User } from '../Interfaces/User';
 
 // FirestoreDataConverter
 
@@ -19,15 +20,21 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AfsService {
+  // firestore collections
   allReservationsRef: AngularFirestoreCollection<ReservationItem>;
   allUsersRef: AngularFirestoreCollection<User>;
   allMallsDataRef: AngularFirestoreCollection<MallData>;
+
+  // interface data
   users!: User[];
   currentLoggedInUser!: User;
-  currUser: any;
   mAfs: AngularFirestore;
 
-  constructor(private afs: AngularFirestore) {
+  // data from Firestore (any types are to handle auto converted data formats that firestore holds)
+  currUser: any;
+
+
+  constructor(private afs: AngularFirestore, private authService: AuthService) {
     // this.reservationsCollection = this.afs.collection('reservations');
     this.mAfs = afs
     this.allReservationsRef = this.mAfs.collection('reservations');

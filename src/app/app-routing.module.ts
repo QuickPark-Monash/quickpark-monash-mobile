@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: "profile-page", component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: "wallet", component: WalletComponent, canActivate: [AuthGuard]},
   { path: "qr-scanner", component: QrScannerComponent, canActivate: [AuthGuard]},
-  { path: "reserve", component: ReserveComponent},
+  { path: "reserve", component: ReserveComponent, canActivate: [AuthGuard]},
   { path: "data-analytics", component: DataAnalyticsComponent,canActivate: [AuthGuard]},
   { path: "vehicles", component:VehiclesComponent,canActivate: [AuthGuard] },
   { path: "testing", component:TestingComponent, canActivate: [AuthGuard]},

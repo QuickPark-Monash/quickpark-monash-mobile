@@ -7,17 +7,20 @@
     <div class="active-title"><i class="fas fa-parking" style="margin-right: 1vh"></i> Active Bookings</div>
     <div class="footer">Select a reservation to see the details!</div>
     <div class="parent-reservation">
-      <div class="reservations" *ngFor="let item of userActiveReservations">
-        <div
-        class="reservation-item"
-        (click)=onSelect(item)
-        [class.selected]="item === selectedItem">
-          <div class="reservation-item-wrap">
-            <div style="margin-right: 1vh;" *ngIf="item === selectedItem"><i class="fas fa-angle-double-right"></i></div>
-            <div>{{item.locationName}}</div>
+      <div class="reservations" *ngIf="!(userActiveReservations.length > 0)" style="text-align: center;"><p>Currently No Active Bookings</p></div>
+      <div class="reservations" *ngIf="userActiveReservations.length > 0">
+        <div class="reservations" *ngFor="let item of userActiveReservations" >
+          <div
+          class="reservation-item"
+          (click)=onSelect(item)
+          [class.selected]="item === selectedItem">
+            <div class="reservation-item-wrap">
+              <div style="margin-right: 1vh;" *ngIf="item === selectedItem"><i class="fas fa-angle-double-right"></i></div>
+              <div>{{item.locationName}}</div>
+            </div>
           </div>
+          <hr style="background-color: #BABEC6; height: 2px; border: 0; margin-left:0; width: 75vw;">
         </div>
-        <hr style="background-color: #BABEC6; height: 2px; border: 0; margin-left:0; width: 75vw;">
       </div>
     </div>
     <app-button routerLink="/addReservation" class="reservationBtn" text="Add Reservation"></app-button>
