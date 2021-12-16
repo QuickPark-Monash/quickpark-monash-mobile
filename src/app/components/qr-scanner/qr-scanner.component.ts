@@ -11,11 +11,15 @@ import { BarcodeFormat } from '@zxing/library';
   styleUrls: ['./qr-scanner.component.scss']
 })
 export class QrScannerComponent implements OnInit {
-  allowedFormats = [ BarcodeFormat.QR_CODE];
-  scanResult: any = '';
+  allowedFormats = [BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX];
+  scanResult: string = '';
   title: string ="QR Code Scanner";
   scanned?: boolean;
   validScan: boolean = false;
+  scanSuccessed: boolean = false;
+  tryAgain: boolean = false;
+  scanAttempts: number = 0;
+  isPopUp: boolean = false;
 
   constructor() { }
 
@@ -26,12 +30,21 @@ export class QrScannerComponent implements OnInit {
       title: "QR Scanner",
       text: "Scan the parking QR Code to check-in your parking space",
       footer:"The QR Code is located on the bottom left of your parking space"
+    }).then(()=>{
+      this.isPopUp = true
+      console.log(this.isPopUp)
     })
+    this.isPopUp = false
+    console.log(this.isPopUp)
   }
 
   onCodeResult(result: string){
     this.scanned = true;
+    this.scanResult = result
+    this.scanSuccessed = true
+    this.scanAttempts += 1
     this.isValidScan(result)
+    // console.log(this.validScan)
     // const validFireOptionsObj = {
     //   icon: 'success',
     //   title: "Check in successful!",
@@ -55,31 +68,41 @@ export class QrScannerComponent implements OnInit {
     //   footer:"Time is starting to tick"
     // }).then(() => window.history.go(-1));
 
-    if (this.validScan){
+    if (this.isValidScan(result)){
       Swal.fire({
         icon: "success",
         title: "Check in successful!",
         text: "Enjoy your visit :)",
         footer:"Time is starting to tick"
-      }).then(() => window.history.go(-1))
+      }).then(() => {
+        this.scanSuccessed = false
+        window.history.go(-1)
+      });
     }
     else{
       Swal.fire({
         icon: "error",
         title: "Check in failure",
-        text: "Invalid check in :(",
-        footer:"Time is starting to tick"
-      }).then(() => window.history.go(-1))
+        text: "Invalid check-in OR Invalid QR code :(",
+        footer:"Try Again"
+      }).then(()=> {
+        this.tryAgain = true;
+        this.validScan = false;
+        this.scanSuccessed = false
+      });
     }
-    this.scanResult = result
   }
 
   // checks whether the scanned car park is valid (MEDIUM MALL PACKAGE: scan twice system)
   // assume that the resultStr is in json string format
-  isValidScan(resultStr: string): void{
+  isValidScan(resultStr: string): boolean{
+    if (resultStr.length === 0){
+      return false
+    }
     const parkSpace = this.parseParkingSpace(resultStr);
-    this.validScan = this.isParkable(parkSpace);
+    // this.validScan = this.isParkable(parkSpace);
     // return this.isParkable(parkSpace)
+    return this.isParkable(parkSpace)
   }
 
   isParkable(parkSpace: ParkingSpace){
@@ -88,12 +111,22 @@ export class QrScannerComponent implements OnInit {
   }
 
   parseParkingSpace(jsonStr: string){
+    // console.log("trying to parse: " + jsonStr)
     const parkSpace: ParkingSpace = JSON.parse(jsonStr);
-    console.log(parkSpace.parkingId, parkSpace.isBooked, parkSpace.isOccupied);
+    // console.log(parkSpace.parkingId, parkSpace.isBooked, parkSpace.isOccupied);
     return parkSpace
   }
 
+  // swalTriggered(){
+  //   return 
+  // }
+
   // upon successful scan, sets
   flipActiveBooking(){
+  }
+
+  // flip boolean values
+  flip(boo: boolean){
+    return !boo
   }
 }

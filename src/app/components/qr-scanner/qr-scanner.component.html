@@ -1,3 +1,6 @@
-<zxing-scanner [formats]="allowedFormats" (scanSuccess)="onCodeResult($event)"></zxing-scanner>
-<p>scan result: {{scanResult}}</p>
+<div class="qr-container" *ngIf="scanAttempts === 0 || tryAgain || !scanSuccessed">
+    <p class="qr-title">QR Code <span>Scanner</span></p>
+    <zxing-scanner class="qr-scanner" (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+    <p class="scan-result">scan result: {{scanResult}}</p>
+</div>
 

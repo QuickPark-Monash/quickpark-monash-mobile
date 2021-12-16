@@ -154,25 +154,25 @@ export class AddReservationComponent implements OnInit {
   updateDailyPrice(selectedMallName: string, selectedDate: Date, selectedTime: Date){
     const selectedDateObj = new Date(selectedDate);
     const selectedMall = this.getMallByName(selectedMallName)
-    console.log(typeof(selectedDateObj))
+    // console.log(typeof(selectedDateObj))
     const newDynamicPrice = selectedMall.parkingLot.weeklyPrices[selectedDateObj.getDay()]
     this.dynamicPrice = newDynamicPrice
-    console.log(this.dynamicPrice)
+    // console.log(this.dynamicPrice)
 
     // Date and Time
-    console.log(this.selectedDate)
-    console.log(typeof(this.selectedDate))
+    // console.log(this.selectedDate)
+    // console.log(typeof(this.selectedDate))
 
-    console.log(this.selectedStartTime)
-    console.log(typeof(this.selectedStartTime))
+    // console.log(this.selectedStartTime)
+    // console.log(typeof(this.selectedStartTime))
 
     const newDate = this.dateTimeToDateObj(this.selectedDate, this.selectedStartTime);
-    console.log(newDate)
-    console.log(typeof(newDate))
+    // console.log(newDate)
+    // console.log(typeof(newDate))
 
     // duration of reservation (miliseconds)
-    console.log(this.duration)
-    console.log(this.floorToMinutes(this.duration)) // rounded to nearest minutes, in terms of miliseconds
+    // console.log(this.duration)
+    // console.log(this.floorToMinutes(this.duration)) // rounded to nearest minutes, in terms of miliseconds
   }
 
   dateTimeToDateObj(dateStr: Date, timeStr: Date): Date{
