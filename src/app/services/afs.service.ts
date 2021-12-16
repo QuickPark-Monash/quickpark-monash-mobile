@@ -71,38 +71,37 @@ export class AfsService {
 
   // adds a new reservation to reservationHistory
   addNewReservation(newReservation: ReservationItem, user: User): void {
-    // convert to pure javascript objects
-    // https://stackoverflow.com/questions/48156234/function-documentreference-set-called-with-invalid-data-unsupported-field-val
-    const newReservationJsObj = { ...newReservation,
-      // reservationStartTime: Object.assign({}, newReservation.reservationStartTime)
-    }
-    // console.log("before push")
-    // console.log(user.reservationHistory)
-    // console.log(user)
 
-    user.reservationHistory!.push(newReservation)
+    const AVAILABLE_DAYS = [0, 1, 3, 5]
 
-    // console.log("after push")
-    // console.log(user.reservationHistory)
+    if (AVAILABLE_DAYS.includes(newReservation.reservationStartTime.getDay())){
+      user.reservationHistory!.push(newReservation)
 
-    // this.afs.collection("users").doc(user.UID).set(Object.assign({}, user)).then(() => console.log("sucessfully set a new user object"))
-    this.afs.collection("users").doc(user.UID).update({"reservationHistory": user.reservationHistory}).then(
-      () => Swal.fire({
-        title:"Reservation Added Successfully",
-        icon:"success",
-        text:"Check your Active Bookings to see the reservation!"
-      }).then(()=>{
-        window.history.go(-1)
-      })).catch(() => {
-      Swal.fire({
-        title:"An error has occured",
-        icon:"error",
-        text:"Please try and log in again.",
-        footer:"If the problem persists, please email quickpark.hackathon@gmail.com"
-      }).then(() => {
-        window.location.reload()
+      this.afs.collection("users").doc(user.UID).update({"reservationHistory": user.reservationHistory}).then(
+        () => Swal.fire({
+          title:"Reservation Added Successfully",
+          icon:"success",
+          text:"Check your Active Bookings to see the reservation!"
+        }).then(()=>{
+          window.history.go(-1)
+        })).catch(() => {
+        Swal.fire({
+          title:"An error has occured",
+          icon:"error",
+          text:"Please try and log in again.",
+          footer:"If the problem persists, please email quickpark.hackathon@gmail.com"
+        }).then(() => {
+          window.location.reload()
+        })
       })
-    })
+    }
+    else{
+      Swal.fire({
+        title:"Unable to reserve parking",
+        icon:"error",
+        text:"There are no available parking spaces at your desired time slot and duration, please select another duration or time slot."
+      })
+    }
   }
 
 

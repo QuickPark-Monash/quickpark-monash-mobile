@@ -46,13 +46,10 @@ export class AuthService {
   }
   // signUp(signUpEmail: string, signUpPassword:string, displayName: string, profilePicture:string,  walletBalance: number,currentVehicle: Vehicle,registeredVehicles: Vehicle[],reservationHistory: ReservationItem[]): void{
   //   this.auth.createUserWithEmailAndPassword(signUpEmail,signUpPassword)
-  
+
   signUp(signUpEmail: string, signUpPassword:string, newUser: User): void{
     this.auth.createUserWithEmailAndPassword(signUpEmail,signUpPassword).then((value)=>{
       this.setCurrentUserId(value.user?.uid)
-      console.log(newUser);   // there is uid
-      console.log(this.currentUserUID);   // there is uid
-      console.log("pointsbalance new user:" + newUser.pointsBalance);   // there is uid
       newUser.UID = this.currentUserUID!
       this.afsService.setNewUser(newUser)
       Swal.fire({
@@ -62,12 +59,14 @@ export class AuthService {
       }).then(() => {
         this.router.navigate([""])
       })
-    }).catch(()=>{
-      Swal.fire({
-        title: "Something went wrong",
-        text: "You must provide a valid email and a password has to be at least 6 letters long",
-        icon: "warning"
-      })
+    }).catch((error)=>{
+      if(error==="auth/invalid-email"){
+        Swal.fire({
+          title: "Invalid Email",
+          text: "You must provide a valid email and a password has to be at least 6 letters long",
+          icon: "warning"
+        })
+      }
     })
   }
 

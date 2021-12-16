@@ -74,18 +74,8 @@ export class QrScannerComponent implements OnInit {
   }
 
   parseParkingSpace(jsonStr: string){
-    // console.log("trying to parse: " + jsonStr)
     const parkSpace: ParkingSpace = JSON.parse(jsonStr);
-    // console.log(parkSpace.parkingId, parkSpace.isBooked, parkSpace.isOccupied);
     return parkSpace
-  }
-
-  // swalTriggered(){
-  //   return 
-  // }
-
-  // upon successful scan, sets
-  flipActiveBooking(){
   }
 
   // flip boolean values

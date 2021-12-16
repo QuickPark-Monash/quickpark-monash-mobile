@@ -61,15 +61,6 @@ export class AddReservationComponent implements OnInit {
     this.formattedTime = this.durationHour.toString().concat(` HR : ${this.durationMinute} MIN`)
   }
 
-  // consoleLogDate(mDate: Date){
-  //   console.log(typeof(mDate));
-  //   const mDateObj: Date = new Date(mDate);
-  //   console.log("selected date is: " + mDateObj.toString())
-  //   console.log(mDateObj.getDay())
-  //   console.log("day num: " + mDateObj.getDay())
-  //   console.log("the selected day is: " + this.convDayStr(mDateObj.getDay()))
-  // }
-
   convDayStr(dayNum: number): string{
     var dayStr: string;
     switch(dayNum) {
