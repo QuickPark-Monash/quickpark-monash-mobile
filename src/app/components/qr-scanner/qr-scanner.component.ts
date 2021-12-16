@@ -15,11 +15,6 @@ export class QrScannerComponent implements OnInit {
   scanResult: string = '';
   title: string ="QR Code Scanner";
   scanned?: boolean;
-  validScan: boolean = false;
-  scanSuccessed: boolean = false;
-  tryAgain: boolean = false;
-  scanAttempts: number = 0;
-  isPopUp: boolean = false;
 
   constructor() { }
 
@@ -30,65 +25,33 @@ export class QrScannerComponent implements OnInit {
       title: "QR Scanner",
       text: "Scan the parking QR Code to check-in your parking space",
       footer:"The QR Code is located on the bottom left of your parking space"
-    }).then(()=>{
-      this.isPopUp = true
-      console.log(this.isPopUp)
     })
-    this.isPopUp = false
-    console.log(this.isPopUp)
   }
 
   onCodeResult(result: string){
     this.scanned = true;
-    this.scanResult = result
-    this.scanSuccessed = true
-    this.scanAttempts += 1
-    this.isValidScan(result)
-    // console.log(this.validScan)
-    // const validFireOptionsObj = {
-    //   icon: 'success',
-    //   title: "Check in successful!",
-    //   text: "Enjoy your visit :)",
-    //   footer:"Time is starting to tick"
-    // };
-    // const invalidFireOptionsObj = {
-    //   icon: 'error' ,
-    //   title: "Check in failure",
-    //   text: "Invalid check in :(",
-    //   footer: ""
-    // };
-    // const optionsObj: SweetAlertOptions<any,any> = this.isValidScan(result) ? validFireOptionsObj : invalidFireOptionsObj;
-    
-    // Swal.fire(optionsObj).then(() => window.history.go(-1));
-
-    // Swal.fire({
-    //   title: "Check in successful!",
-    //   icon: "success",
-    //   text: "Enjoy your visit :)",
-    //   footer:"Time is starting to tick"
-    // }).then(() => window.history.go(-1));
 
     if (this.isValidScan(result)){
+
       Swal.fire({
         icon: "success",
         title: "Check in successful!",
         text: "Enjoy your visit :)",
         footer:"Time is starting to tick"
       }).then(() => {
-        this.scanSuccessed = false
+        this.scanned = true;
         window.history.go(-1)
       });
     }
     else{
+      this.scanned = true
       Swal.fire({
         icon: "error",
-        title: "Check in failure",
-        text: "Invalid check-in OR Invalid QR code :(",
-        footer:"Try Again"
+        title: "Check-in failure",
+        text: "You are at wrong parking spot :(",
+        footer:"Please try again at the designated parking space"
       }).then(()=> {
-        this.tryAgain = true;
-        this.validScan = false;
-        this.scanSuccessed = false
+        this.scanned = false;
       });
     }
   }
