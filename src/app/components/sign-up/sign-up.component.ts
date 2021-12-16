@@ -38,10 +38,6 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes.carPlateNo)
-  // }
-
   confirmCheck(){
     return this.signUpPassword !== null && this.signUpPassword === this.confirmPass
   }
@@ -51,7 +47,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp(){
-    if(this.validSignUp()){
+    if(this.validSignUp() === "Sign-Up Successful"){
       const newVehicle: Vehicle = {
         vehicleName: this.DEFAULT_VEHICLE_NAME,
         vehiclePlate: this.carPlateNo,
@@ -70,33 +66,42 @@ export class SignUpComponent implements OnInit {
       }
 
       this.authService.signUp(this.emailAddress, this.signUpPassword, newUser);
-      // add the user data: displayName and carplate number
-      // var currentUserUid = this.authService.getUID()
-      // console.log(this.authService.getUID())
-      // console.log(currentUserUid);
-      // this.afsService.addNewUser(currentUserUID, newUserData);
-      this.consoleLogStuff();
     }
     else{
       Swal.fire({
-        title: "Invalid information entered",
+        title: this.validSignUp(),
         text: "Please verify that your credentials are correctly entered",
         icon:"error"
       })
-      // this.clearForm();
     }
   }
 
-  validSignUp(): boolean{
-    return this.carPlateNo !== undefined
-    && this.signUpPassword === this.confirmPass
-    && this.displayName !== undefined
-    && this.signUpPassword !== undefined
-  }
+  validSignUp(): string{
+    var response: string = "Sign-Up Successful";
+    switch(true){
 
-  consoleLogStuff(){
-    console.log(this.displayName);
-    console.log(this.authService.currentUserUID);
+      case (this.displayName === undefined):
+        response = "Display Name not entered";
+        break;
+
+      case (this.emailAddress === undefined):
+        response = "Email Address not entered";
+        break;
+
+      case (this.carPlateNo === undefined):
+        response = "Car Plate Number not entered";
+        break;
+
+      case (this.signUpPassword !== this.confirmPass):
+        response = "Passwords do not match";
+        break;
+
+      case (this.signUpPassword === undefined):
+        response = "Password not entered"
+        break;
+    }
+
+    return response
   }
 
   clearForm(){
