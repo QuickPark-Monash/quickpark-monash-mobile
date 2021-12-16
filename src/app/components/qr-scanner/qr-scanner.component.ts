@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ParkingSpace } from 'src/app/Interfaces/ParkingSpace';
 import { User } from 'src/app/Interfaces/User';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertOptions } from 'sweetalert2';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -12,6 +13,7 @@ export class QrScannerComponent implements OnInit {
   scanResult: any = '';
   title: string ="QR Code Scanner";
   scanned?: boolean;
+  validScan: boolean = false;
 
   constructor() { }
 
@@ -27,19 +29,20 @@ export class QrScannerComponent implements OnInit {
 
   onCodeResult(result: string){
     this.scanned = true;
+    this.isValidScan(result)
     // const validFireOptionsObj = {
+    //   icon: 'success',
     //   title: "Check in successful!",
-    //   icon: "success",
     //   text: "Enjoy your visit :)",
     //   footer:"Time is starting to tick"
     // };
     // const invalidFireOptionsObj = {
-    //   icon: "error",
+    //   icon: 'error' ,
     //   title: "Check in failure",
     //   text: "Invalid check in :(",
     //   footer: ""
     // };
-    // const optionsObj = this.isValidScan(result) ? validFireOptionsObj : invalidFireOptionsObj;
+    // const optionsObj: SweetAlertOptions<any,any> = this.isValidScan(result) ? validFireOptionsObj : invalidFireOptionsObj;
     
     // Swal.fire(optionsObj).then(() => window.history.go(-1));
 
@@ -50,7 +53,7 @@ export class QrScannerComponent implements OnInit {
     //   footer:"Time is starting to tick"
     // }).then(() => window.history.go(-1));
 
-    if (this.isValidScan(result)){
+    if (this.validScan){
       Swal.fire({
         icon: "success",
         title: "Check in successful!",
@@ -66,15 +69,15 @@ export class QrScannerComponent implements OnInit {
         footer:"Time is starting to tick"
       }).then(() => window.history.go(-1))
     }
-
     this.scanResult = result
   }
 
   // checks whether the scanned car park is valid (MEDIUM MALL PACKAGE: scan twice system)
   // assume that the resultStr is in json string format
-  isValidScan(resultStr: string): boolean{
+  isValidScan(resultStr: string): void{
     const parkSpace = this.parseParkingSpace(resultStr);
-    return this.isParkable(parkSpace)
+    this.validScan = this.isParkable(parkSpace);
+    // return this.isParkable(parkSpace)
   }
 
   isParkable(parkSpace: ParkingSpace){
