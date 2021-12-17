@@ -1,4 +1,13 @@
-<h2>🎉 QuickPark new release v1.0 🎉</h2>
+<h2>🏆 Competition results 🏆</h2>
+We have been placed top 6 in the Junior Category of the QuickHack out of 200 total participants. Unfortunately we did not manage to get top 3, which I believe are due to a variety of reasons stated below.<br>
+<br>
+🙍 We did not do enough research on how to execute our idea with regards to collecting data for ML <br>
+😔 We were too tired trying to setup the backend of the project and did not give much thought to the actual final pitch presentation<br>
+😭 We did not understand the competition requirements well leading to us losing quite a lot of marks<br>
+
+But hey, top 6 is pretty good 😄 ~
+
+<h2>🎉 QuickPark v1.0 🎉</h2>
 We are proud to announce that we have made a lot of frontend and backend changes throughout these few short days. Regardless if we win or lose, it is a project that we are proud of. We will be categorizing both frontend and backend changes below. 
 
 <h3>🖥️ UI/UX Improvements</h3>
