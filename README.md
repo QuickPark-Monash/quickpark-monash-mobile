@@ -1,3 +1,20 @@
+<h2>🎉 QuickPark new release v1.0 🎉</h2>
+We are proud to announce that we have made a lot of frontend and backend changes throughout these few short days. Regardless if we win or lose, it is a project that we are proud of. We will be categorizing both frontend and backend changes below. 
+
+<h3>🖥️ UI/UX Improvements</h3>
+🌹 Added new and improved sign up and sign in page <br>
+🌻 Added skeleton loading when retrieving data from servers <br>
+🌺 Better Reservation History selection screen <br>
+🌼 More meaningful error messages instead of <b>"Oops, something went wrong!"</b> <br>
+
+<h3>⚙️ Functionality Improvements</h3>
+🍀 A solid backend that allows you to actually sign in and sign up via authentication and verification <br>
+🍁 Unique booking history corresponding to logged in user <br>
+🍂 Able to book parking spots according to availability and user input<br>
+🌱 Able to check into parking space according to QR Code <br>
+🌵 Dynamic pricing shown during booking <br>
+<hr>
+
 <h1>QuickPark Website Viewing Info</h1>
 Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>. <br>
 <b>THE BEST WEB APP EXPERIENCE IS THROUGH YOUR MOBILE DEVICES BROWSER!</b>
