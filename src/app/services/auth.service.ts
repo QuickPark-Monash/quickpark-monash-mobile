@@ -60,7 +60,7 @@ export class AuthService {
         this.router.navigate([""])
       })
     }).catch((error)=>{
-      if(error==="auth/invalid-email"){
+      if(error.code==="auth/invalid-email"){
         Swal.fire({
           title: "Invalid Email",
           text: "You must provide a valid email and a password has to be at least 6 letters long",

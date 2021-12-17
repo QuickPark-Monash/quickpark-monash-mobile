@@ -99,6 +99,10 @@ export class SignUpComponent implements OnInit {
       case (this.signUpPassword === undefined):
         response = "Password not entered"
         break;
+
+      case (this.signUpPassword.length <= 6):
+        response = "Password not long enough"
+        break;
     }
 
     return response
