@@ -75,6 +75,13 @@ If you've chosen to look at how the insides of our web application works, the pr
 4. Run <code>ng serve</code> to host your Angular project locally, make sure you're in the project directory<br>
 5. By default, the webpage should load at <code>localhost:4200</code>, follow the steps above to change your Google Chrome device size for optimal surfing.
 
+<h3>Trying out the QR scanner page</h3>
+This is an example of a QR code that will lead to a valid scan.
+<p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"> <img src="https://user-images.githubusercontent.com/44129179/146675753-60e6904d-44e1-4c41-8e28-e552ff6457b3.png">
+</p>
+Any other forms of invalid QR code that our backend does not handle will give you an invalid error pop-up window.
+
+
 <!-- to start off, run npm install on these few stuff:
 npm i angular 
 npm i @zxing/library --force
