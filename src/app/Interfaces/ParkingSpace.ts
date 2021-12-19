@@ -21,6 +21,7 @@ export class ParkingSpace{
     // occupiedByUid: number | null;
     isBooked: boolean;
     isOccupied: boolean;
+
     constructor( 
         parkingId: string, 
         // reservationItem: ReservationItem,

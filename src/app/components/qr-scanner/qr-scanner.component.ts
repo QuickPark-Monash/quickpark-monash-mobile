@@ -4,6 +4,9 @@ import { User } from 'src/app/Interfaces/User';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { textChangeRangeIsUnchanged } from 'typescript';
 import { BarcodeFormat } from '@zxing/library';
+import { MOCK_MALL_DATA } from 'src/app/MockData/mockMallData';
+import { ValidationError } from 'src/app/custom-errors.ts/ValidationError';
+
 
 @Component({
   selector: 'app-qr-scanner',
@@ -30,7 +33,7 @@ export class QrScannerComponent implements OnInit {
 
   onCodeResult(result: string){
     this.scanned = true;
-
+    console.log(result)
     if (this.isValidScan(result)){
 
       Swal.fire({
@@ -48,7 +51,7 @@ export class QrScannerComponent implements OnInit {
       Swal.fire({
         icon: "error",
         title: "Check-in failure",
-        text: "You are at wrong parking spot :(",
+        text: "You are at the wrong parking spot",
         footer:"Please try again at the designated parking space"
       }).then(()=> {
         this.scanned = false;
@@ -59,12 +62,30 @@ export class QrScannerComponent implements OnInit {
   // checks whether the scanned car park is valid (MEDIUM MALL PACKAGE: scan twice system)
   // assume that the resultStr is in json string format
   isValidScan(resultStr: string): boolean{
-    if (resultStr.length === 0){
+    let parkSpace: any;
+
+    if (resultStr.length === 0){  // zero length json string
       return false
     }
-    const parkSpace = this.parseParkingSpace(resultStr);
-    // this.validScan = this.isParkable(parkSpace);
-    // return this.isParkable(parkSpace)
+    else{
+      try {
+        parkSpace = this.parseParkingSpace(resultStr);
+      } 
+      catch (err) {
+        if (err instanceof ValidationError) {
+          console.log("Invalid data: " + err.message); // Invalid data: No field: name
+          return false
+        } 
+        else if (err instanceof SyntaxError) { 
+          console.log("JSON Syntax Error: " + err.message);
+          return false
+        } 
+        else {
+          throw err; // unknown error, rethrow it (**)
+        }
+      }
+    }
+    
     return this.isParkable(parkSpace)
   }
 
@@ -74,12 +95,33 @@ export class QrScannerComponent implements OnInit {
   }
 
   parseParkingSpace(jsonStr: string){
-    const parkSpace: ParkingSpace = JSON.parse(jsonStr);
+    // const parkSpace: ParkingSpace
+    const parkSpace: any = JSON.parse(jsonStr);
+
+    if (!parkSpace.parkingId) {
+      throw new ValidationError("No field: parkingId");
+    }
+    if (!parkSpace.time) {
+      throw new ValidationError("No field: time");
+    }
+    if (!parkSpace.fee) {
+      throw new ValidationError("No field: fee");
+    }    
+    if (!parkSpace.isBooked) {
+      throw new ValidationError("No field: isBooked");
+    }
+    if (!parkSpace.isOccupied) {
+      throw new ValidationError("No field: isOccupied");
+    }
     return parkSpace
   }
+
+  // read parking space JSON objects
+
 
   // flip boolean values
   flip(boo: boolean){
     return !boo
   }
+
 }
