@@ -73,13 +73,21 @@ If you've chosen to look at how the insides of our web application works, the pr
 2. Next, run <code>git clone https://github.com/QuickPark-Monash/quickpark-monash-mobile.git</code> to download the files to a directory.<br>
 3. Then, run <code>npm install</code> to install all the required dependencies.<br>
 4. Run <code>ng serve</code> to host your Angular project locally, make sure you're in the project directory<br>
-5. By default, the webpage should load at <code>localhost:4200</code>, follow the steps above to change your Google Chrome device size for optimal surfing.
+5. By default, the webpage should load at <code>localhost:4200</code>, follow the steps above to change your Google Chrome device size for optimal surfing. 
 
 <h3>Trying out the QR scanner page</h3>
 This is an example of a QR code that will lead to a valid scan.
-<p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"></p> <br> 
-<p align=center> <img src="https://user-images.githubusercontent.com/44129179/146675753-60e6904d-44e1-4c41-8e28-e552ff6457b3.png" width="">
-</p>
+
+<center>
+<table>
+    <tr style="align: center"> 
+        <td> <p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"> </td>
+        <td>&nbsp; &nbsp; &nbsp; ➜ &nbsp; &nbsp; </td>
+        <td> <img src="https://user-images.githubusercontent.com/44129179/146675753-60e6904d-44e1-4c41-8e28-e552ff6457b3.png" width="96"> </td>
+    </tr>
+</table>
+</center>
+
 Any other forms of invalid QR code that our backend does not handle will give you an invalid error pop-up window.
 
 
