@@ -79,13 +79,13 @@ If you've chosen to look at how the insides of our web application works, the pr
 This is an example of a QR code that will lead to a valid scan.
 
 <center>
-<table>
-    <tr style="align: center"> 
-        <td> <p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"> </td>
-        <td>&nbsp; &nbsp; &nbsp; ➜ &nbsp; &nbsp; </td>
-        <td> <img src="https://user-images.githubusercontent.com/44129179/146675753-60e6904d-44e1-4c41-8e28-e552ff6457b3.png" width="96"> </td>
-    </tr>
-</table>
+    <table>
+        <tr style="align: center"> 
+            <td> <p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"> </td>
+            <td>&nbsp; &nbsp; &nbsp; ➜ &nbsp; &nbsp; </td>
+            <td> <img src="https://user-images.githubusercontent.com/44129179/146675753-60e6904d-44e1-4c41-8e28-e552ff6457b3.png" width="96"> </td>
+        </tr>
+    </table>
 </center>
 
 Any other forms of invalid QR code that our backend does not handle will give you an invalid error pop-up window.
