@@ -24,6 +24,10 @@ We are proud to announce that we have made a lot of frontend and backend changes
 🌵 Dynamic pricing shown during booking <br>
 <hr>
 
+<h3>📯 Tech-Stack</h3>
+🔰 Angular, JavaScript, SCSS and HTML
+🔱Firebase
+
 <h1>QuickPark Website Viewing Info</h1>
 Welcome, to start off, we are currently hosting the webpage on GitHub Pages, here https://quickpark-monash.github.io/quickpark-monash-mobile/ Before you navigate the website, we need you to do some adjustments to your desktop internet browser. If you are currently on your mobile phone, please skip to <a href="https://github.com/QuickPark-Monash/quickpark-monash-mobile#viewing-on-your-mobile-device">this section</a>. <br>
 <b>THE BEST WEB APP EXPERIENCE IS THROUGH YOUR MOBILE DEVICES BROWSER!</b>
@@ -76,23 +80,13 @@ If you've chosen to look at how the insides of our web application works, the pr
 5. By default, the webpage should load at <code>localhost:4200</code>, follow the steps above to change your Google Chrome device size for optimal surfing. 
 
 <h3>Trying out the QR scanner page</h3>
-This is an example of a QR code that will lead to a valid scan.
+This is an example of a QR code that will lead to a valid scan. As of now, a valid scan just means a parking space that has not been booked or occupied by any other users. 
 
 
 <p align=center><img src="https://user-images.githubusercontent.com/44129179/146675721-6238bc24-aedf-4520-9566-a7f07618b307.png"> </p> 
 
 
 Any other forms of invalid QR code that our backend does not handle will give you an invalid error pop-up window.
-
-
-<!-- to start off, run npm install on these few stuff:
-npm i angular 
-npm i @zxing/library --force
-npm i @zxing/browser --force
-npm i @zxing/ngx-scanner --force
-npm install vega
-npm install vega-lite
-npm install vega-embed -->
 
 
 
