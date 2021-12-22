@@ -25,7 +25,7 @@ We are proud to announce that we have made a lot of frontend and backend changes
 <hr>
 
 <h3>📯 Tech-Stack</h3>
-🔰 Angular, JavaScript, SCSS and HTML
+🔰 Angular, JavaScript, SCSS and HTML<br>
 🔱Firebase
 
 <h1>QuickPark Website Viewing Info</h1>
